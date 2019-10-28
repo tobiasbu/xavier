@@ -1,5 +1,11 @@
-# magnetos
-Magnetos is a transaction bank simulator.
+<div align="center" style="margin:16px 0">
+<img src="https://raw.githubusercontent.com/tobiasbu/magnetos/master/docs/magnetos_logo.png"/>
+</div>
+
+<p align="center" style="font-size: 1.2rem;"><strong>Magnetos</strong> is a credit and debit card transaction manager. </p>
+
+
+
 
 ## Table of contents
 
