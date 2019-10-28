@@ -10,8 +10,9 @@ import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 
 import webpackConfigFn from './webpack.config';
+import stats from './stats';
 
-import getLogger from '../shared/getLogger';
+import getLogger from '../vendor/getLogger';
 
 async function main() {
 
@@ -76,24 +77,13 @@ async function main() {
     // Server configuration
     const devMiddlewareConfig = {
       logger,
+      stats,
       publicPath: config.output.publicPath,
       quiet: false,
       reload: true,
       overlay: true,
       writeToDisk: true,
       noInfo: true,
-      stats: {
-        assets: false,
-        builtAt: false,
-        cached: false,
-        cachedAssets: false,
-        colors: true,
-        errors: true,
-        errorDetails: true,
-        hash: false,
-        logging: 'log',
-
-      }
     }
 
     const devMiddleware = WebpackDevMiddleware(compiler, devMiddlewareConfig);

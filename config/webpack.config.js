@@ -43,6 +43,9 @@ export default function (env) {
     },
     resolve: {
       extensions: [".js", ".jsx", ".json"],
+      alias: {
+        "@vendor": path.resolve(ROOT_PATH, "vendor")
+      }
     },
     module: {
       rules: [
