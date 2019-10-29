@@ -4,7 +4,8 @@
   "description": "Magnetos is a bank transaction simulator.",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm ./config/dev_server.js --host=local-net",
+    "start": "npm run clean && node -r esm ./config/dev_server.js --host=local-net",
+    "clean": "rm -fr dist",
     "test": "jest"
   },
   "repository": {
@@ -24,13 +25,21 @@
   },
   "homepage": "https://github.com/tobiasbu/magnetos#readme",
   "dependencies": {
+    "@moebius/http-graceful-shutdown": "^1.1.0",
+    "dinero.js": "^1.6.0",
     "jss": "^10.0.0",
     "jss-plugin-global": "^10.0.0",
     "jss-preset-default": "^10.0.0",
+    "murmurhash-js": "^1.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-jss": "^10.0.0",
     "react-redux": "^7.1.1",
-    "redux": "^4.0.4"
+    "react-router-dom": "^5.1.2",
+    "react-text-mask": "^5.4.3",
+    "redux": "^4.0.4",
+    "text-mask-addons": "^3.8.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.6.3",
@@ -52,10 +61,12 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "react-hot-loader": "^4.12.15",
     "string-similarity": "^3.0.0",
+    "svg-url-loader": "^3.0.2",
     "webpack": "^4.41.2",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"

@@ -2,10 +2,11 @@ import * as path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 
+
 // import ip from 'ip';
 // import cors from 'cors';
 // const opn = require('opn');
-
+import { GracefulShutdownManager } from '@moebius/http-graceful-shutdown';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 
@@ -68,7 +69,6 @@ async function main() {
       if (stats.hasWarnings()) {
         logger.warn("Client has warnings:\n:", info.warnings.join("\n\n"));
       }
-      logger.log(`Magnetos.Client has been built successfully!`);
       resolve();
     });
   });
@@ -79,17 +79,15 @@ async function main() {
       logger,
       stats,
       publicPath: config.output.publicPath,
-      quiet: false,
-      reload: true,
-      overlay: true,
       writeToDisk: true,
-      noInfo: true,
+      logLevel: 'warn',
     }
 
     const devMiddleware = WebpackDevMiddleware(compiler, devMiddlewareConfig);
     const hotMiddleware = WebpackHotMiddleware(compiler, {
+      log: logger.log,
       path: '/__webpack_hmr',
-      heartbeat: 10 * 1000
+      heartbeat: 10 * 1000,
     });
 
     const expressApp = express();
@@ -103,8 +101,8 @@ async function main() {
         logger.error('Could not start dev server:', error.join("\n\n"));
         return reject(error);
       }
-      logger.log('Dev server listening in localhost port ' + port + '\n');
-      resolve({ server, devMiddleware});
+      logger.log('Dev server listening in localhost port ' + port);
+      resolve({ server, devMiddleware });
     });
   });
 
@@ -113,16 +111,31 @@ async function main() {
 
   return new Promise((resolve, reject) => {
 
+    const shutdownManager = new GracefulShutdownManager(result.server);
+
+    let exited = false;
     const onExit = (code) => {
-      logger.log('Stopping dev server');
-      devMiddleware.close();
-      server.close((err) => {
-        logger.error(`Server exited with error`, err);
-      })
-      resolve();
+      if (!exited) {
+        exited = true;
+        result.devMiddleware.close();
+        // result.server.close((err) => {
+        //   if (err) {
+        //     logger.error(`\n\nServer exited with error`, err);
+        //   } else {
+        //     logger.info('\n\nServer exited successfully...');
+        //   }
+        // })
+        shutdownManager.terminate(() => {
+          logger.info('Server exited successfully...\n\n');
+          resolve();
+        });
+        
+      }
+
     }
 
     process.on('SIGTERM', onExit);
+    // process.on('SIGINT', onExit);
 
   });
 }

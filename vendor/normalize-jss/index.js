@@ -1,7 +1,7 @@
 /**
  * Note: It's been a while that the JSS team hasn't updated the NPM package for this script.
  * The package has peer dependencies warnings with old packages.
- * I decided to create from scratch this port.
+ * I decided to create from scratch this port using web tools ;)cd ast
  * 26/10/2019
  */
 

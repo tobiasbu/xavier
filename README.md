@@ -1,7 +1,7 @@
-<div align="center" style="margin:16px 0">
+<p align="center" style="margin:16px">
 <img src="https://tobiasbu.github.io/img/magnetos_logo.png"/>
-</div>
-
+</p>
+<br>
 <p align="center" style="font-size: 1.2rem;"><strong>Magnetos</strong> is a credit and debit card transaction manager. </p>
 
 

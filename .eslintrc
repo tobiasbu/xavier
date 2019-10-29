@@ -15,7 +15,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "plugins": [
@@ -30,13 +30,19 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@vendor","./vendor"]
+          ["@vendor","./vendor"],
+          ["@utils","./src/utils"]
         ],
         "extensions": [
           ".js",
           ".jsx",
-          ".json"
-        ]
+          ".json",
+          ".ts", 
+          ".tsx"
+        ],
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
       }
     }
   }

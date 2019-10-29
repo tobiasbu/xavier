@@ -10,24 +10,42 @@ export default {
   cached: false,
   cachedAssets: false,
   children: false,
+
   chunks: false,
   chunkGroups: false,
   chunkModules: false,
   chunkOrigins: false,
 
   colors: true,
+  depth: false,
+  entrypoints: false,
+  env: false,
+
   errors: true,
   errorDetails: true,
+
+  excludeAssets: () => false,
+  excludeModules: false,
+
   hash: false,
-  logging: 'log',
-  hash: false,
+
+  loggingDebug: () => false,
+  logging: 'info',
   loggingTrace: false,
+  
+  maxModules: 1,
   modules: false,
-  moduleTrace: true,
+  moduleTrace: false,
+
   outputPath: false,
   performance: false,
+  providedExports: false,
+
   publicPath: false,
   reasons: false,
+  source: false,
   timings: false,
+
+  usedExports: false,
   version: false,
 };

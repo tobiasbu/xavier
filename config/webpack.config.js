@@ -4,7 +4,11 @@ import path from 'path';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /**
- * @returns {webpack.Configuration}
+ * @typedef { import("webpack").Configuration } Configuration
+ */
+
+/**
+ * @return { Configuration }
  */
 export default function (env) {
 
@@ -14,17 +18,18 @@ export default function (env) {
 
   // Paths constants
   const ROOT_PATH = path.join(__dirname, '..');
-  const ENTRY_PATH = path.join(ROOT_PATH, './src/index.js');
+  const ENTRY_PATH = path.join(ROOT_PATH, './src/index.jsx');
   const OUTPUT_PATH = path.join(ROOT_PATH, './dist');
 
   // Hot Middleware
   const HOST = 'localhost';
   const PORT = 3000;
-  const HOT_MW = `webpack-hot-middleware/client?path=http://${HOST}:${PORT}/__webpack_hmr&reload=true`;
+  const HOT_MW = `webpack-hot-middleware/client?path=http://${HOST}:${PORT}/__webpack_hmr&reload=true&noInfo=true&quiet=true`;
+
 
   /**
    * Webpack configuration for Magnetos Client
-   * @type {webpack.Configuration}
+   * @type { Configuration }
    */
   const config = {
     context: ROOT_PATH,
@@ -39,22 +44,18 @@ export default function (env) {
       filename: '[name].js',
       hotUpdateChunkFilename: ".hot/[id].[hash].hot-update.js",
       hotUpdateMainFilename: ".hot/[hash].hot-update.json",
-      pathinfo: true,
+      pathinfo: isProduction === false,
+      
     },
     resolve: {
       extensions: [".js", ".jsx", ".json"],
       alias: {
-        "@vendor": path.resolve(ROOT_PATH, "vendor")
+        "@vendor": path.resolve(ROOT_PATH, "vendor"),
+        "@utils": path.resolve(ROOT_PATH, "src/utils")
       }
     },
     module: {
       rules: [
-        {
-          enforce: "pre",
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: "eslint-loader",
-        },
         {
           test: /\.jsx?$/,
           loader: "babel-loader",
@@ -71,12 +72,18 @@ export default function (env) {
               loader: 'file-loader',
               options: {
                 useRelativePaths: true,
-                name: '[name].[ext]',
-                outputPath: 'img/'
+                name: (env.isProduction) ? '[sha512:hash:hex:9].[ext]' : '[name].[ext]',
+                outputPath: (url, resourcePath, context) => {
+                  // `resourcePath` is original absolute path to asset
+                  if (/.svg$/i.test(resourcePath)) {
+                    return `icons/${url}`;
+                  }
+                  return `img/${url}`;
+                },
               }
             },
             // 'file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]',
-            'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false',
+            // 'image-webpack-loader?bypassOnDebug&optipng.optimizationLevel=7&gifsicle.interlaced=false',
           ],
         },
       ],
@@ -97,8 +104,21 @@ export default function (env) {
         template: path.join(ROOT_PATH, "./static/index.html"),
         cache: isProduction === false,
       }),
-    ]
+    ],
+    stats: 'errors-warnings',
   };
+
+  const withEslint = false;
+
+  if (withEslint) {
+    config.module.rules.unshift(
+    {
+      enforce: "pre",
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: "eslint-loader",
+    });
+  }
 
 
   return config;
