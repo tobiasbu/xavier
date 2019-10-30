@@ -13,7 +13,7 @@ import * as Utils from '@utils';
  */
 const Toggle = (props) => {
   const {
-    label, disabled, checked, onChange,
+    label, disabled, checked, onChange, secondaryLabel,
   } = props;
 
   const [isChecked, setChecked] = useState(checked);
@@ -41,26 +41,35 @@ const Toggle = (props) => {
         onChange={onChangeWrap}
       />
       <span className="a-toggle__shape" />
-      <label htmlFor={inputId} id={labelId}>{label}</label>
+      {
+        secondaryLabel
+        && (
+        <label className="secondary" htmlFor={inputId} id={labelId}>
+          {secondaryLabel}
+        </label>
+        )
+      }
     </div>
   );
 };
 
 /**
- * Button control default props
+ * Toggle default props
  */
 Toggle.defaultProps = {
   label: 'Toggle',
+  secondaryLabel: null,
   checked: false,
   disabled: false,
   onChange: null,
 };
 
 /**
- * Button control prop types
+ * Toggle prop types
  */
 Toggle.propTypes = {
   label: PropTypes.string,
+  secondaryLabel: PropTypes.string,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,

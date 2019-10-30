@@ -4,7 +4,6 @@ const style = jss.createStyleSheet({
   sidebarWrapper: {
     width: 320,
     position: 'relative',
-    backgroundColor: 'var(--color-space-200)',
   },
 
   sidebarContent: {
@@ -18,6 +17,7 @@ const style = jss.createStyleSheet({
     height: '100%',
     maxHeight: '100vh',
     backgroundColor: 'inherit',
+    borderRight: '1px solid var(--color-space-300)',
   },
 });
 

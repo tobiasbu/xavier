@@ -12,6 +12,11 @@ export function getValue(value, defaultValue) {
   return value;
 }
 
+/**
+ * Convenience function to check if value is `null` or `undefined`.
+ * @param {any} value Value to be tested.
+ * @return {boolean} True if is not invalid value otherwise false.
+ */
 export function isValid(value) {
   return (value !== null && value !== undefined);
 }

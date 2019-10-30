@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  * Represents a control button.
  *
  * Controls increasing and decreasing of values from a Input component.
- * @param {*} props
+ * @param {import("./types").ControlButtonProps} props Properties
  */
 const ControlButton = (props) => {
   const {

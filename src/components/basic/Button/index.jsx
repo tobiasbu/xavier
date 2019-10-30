@@ -31,6 +31,9 @@ const Button = (props) => {
   );
 };
 
+/**
+ * Button default props
+ */
 Button.defaultProps = {
   // Easter-Egg to remember that we NEED to insert text in a button.
   // By the way, this song is from Led Zeppelin. (DON'T FORGET TO REMOVE THIS)
@@ -38,6 +41,9 @@ Button.defaultProps = {
   color: 'uranus',
 };
 
+/**
+ * Button prop types
+ */
 Button.propTypes = {
   children: PropTypes.string,
   color: PropTypes.string,

@@ -4,8 +4,8 @@ import hash from 'murmurhash-js';
 /**
  * Class name generator like Aphrodite.
  *
- * Currently JSS is not supporting custom class name generator =/
- * @param {any} rule  Class name
+ * Currently `react-jss` is not supporting custom class name generator (bug?)
+ * @param {any} rule Class name
  * @param {suffix} sheet Stylesheet
  */
 export default function generateHash(key, suffix = '', withTime = false) {

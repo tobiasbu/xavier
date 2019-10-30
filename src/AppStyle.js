@@ -1,6 +1,8 @@
 import { createUseStyles } from 'react-jss';
-// import MediaQueries from './style/mediaQueries';
 
+/**
+ * App styles.
+ */
 export default createUseStyles({
   mainEntry: {
     outline: 'none',

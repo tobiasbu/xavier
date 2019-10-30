@@ -17,10 +17,6 @@ jss.setup(jssOptions);
 
 const globals = {
   '@global': {
-    ':root': {
-      '--color': '#ffaadd',
-      '--text': '3rem',
-    },
     '#root': {
       height: '100%',
       minHeight: '100%',
@@ -31,14 +27,13 @@ const globals = {
       lineHeight: 1.5,
     },
     a: {
-      textDecoration: 'underline',
+      textDecoration: 'none',
     },
-    myTest: {
-      color: 'red',
-    },
-    main: {
-      maxWidth: '48rem',
-      margin: '0 auto',
+    p: {
+      fontFamily: 'Lato, sans-serif',
+      fontSize: 'var(--font-size-2base)',
+      fontWeight: 400,
+      margin: '0.8rem 0 1rem',
     },
   },
 };

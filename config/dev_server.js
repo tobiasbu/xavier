@@ -104,6 +104,10 @@ async function main() {
       logger.log('Dev server listening in localhost port ' + port);
       resolve({ server, devMiddleware });
     });
+
+    expressApp.get("/*", (req, res) => {
+      res.status(301).redirect("/")
+    });
   });
 
   const result = await serverPromise;
@@ -129,7 +133,7 @@ async function main() {
           logger.info('Server exited successfully...\n\n');
           resolve();
         });
-        
+
       }
 
     }

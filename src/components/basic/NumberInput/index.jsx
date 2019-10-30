@@ -14,7 +14,9 @@ import ControlButton from './ControlButton';
 /**
  * Astro number input.
  *
- * I should create a component of this too.
+ * Note: This is not stable!
+ * We need control when user inputs any character that is not digit.
+ * Use <CurrencyInput />
  *
  * @param {NumberInputProps} props Number input Properties
  */
@@ -49,14 +51,13 @@ const NumberInput = (props) => {
       if (typeof inputValue === 'string') {
         val = parseInt(inputValue, 10);
       }
-      // eslint-disable-next-line no-restricted-globals
-      if (isNaN(val)) {
+      if (Number.isNaN(val)) {
         val = 0;
       }
       val += step * sign;
     }
     setValue(val);
-    if (Utils.isValid(ref)) {
+    if (Utils.isValid(ref)) { // <- useEffect...
       if (ref.current) {
         ref.current.focus();
       }
@@ -65,7 +66,7 @@ const NumberInput = (props) => {
 
   const onKeyUp = () => {
     if (Utils.isValid(ref)) {
-      if (ref.current) {
+      if (ref.current) { // Should handle with useEffect
         ref.current.focus();
       }
     }

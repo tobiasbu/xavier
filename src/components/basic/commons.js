@@ -17,7 +17,7 @@ export function getValidationClass(validation) {
 
 /**
  * For `<input>` labels, should float at top?
- * Specific Astro behavior
+ * Specific Astro behavior.
  *
  * @param {InputProps} props Input properties
  * @param {string} inputValue Current input value
