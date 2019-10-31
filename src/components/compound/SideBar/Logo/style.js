@@ -1,12 +1,12 @@
 import { createUseStyles } from 'react-jss';
+import { generateId } from '@utils/generateHash';
 
 import magnetosLogo from './magnetos-logo.svg';
-import generateId from '../../../generateId';
 
 const useStyle = createUseStyles({
   magnetos: {
     maxWidth: '100%',
-    height: 96,
+    height: 120,
     textIndent: '-999px',
     backgroundSize: 'contain',
     backgroundImage: `url(${magnetosLogo})`,

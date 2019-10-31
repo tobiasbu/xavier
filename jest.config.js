@@ -16,7 +16,7 @@ module.exports = {
 
   notify: true,
   rootDir: ".",
-  roots: ["<rootDir>/tests"],
+  roots: ["<rootDir>/tests", "<rootDir>/src"],
   displayName: {
     name: 'MAGNETOS',
     color: 'red',

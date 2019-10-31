@@ -4,7 +4,7 @@ import slugify from 'slugify';
 
 import useCallbackRef from '@utils/useCallbackRef';
 import * as Utils from '@utils';
-import * as commons from '../commons';
+import * as commons from '../inputCommons';
 
 import useStyle from './style';
 
@@ -71,7 +71,7 @@ const Input = (props) => {
       >
         {label}
       </label>
-      <span className={`a-input__error ${classes.errorMessage}`}>{errorMessage}</span>
+      <span className={`a-input__error ${classes.errorMessage}`} aria-live="polite">{errorMessage}</span>
     </div>
   );
 };

@@ -31,7 +31,8 @@
       "alias": {
         "map": [
           ["@vendor","./vendor"],
-          ["@utils","./src/utils"]
+          ["@utils","./src/utils"],
+          ["@API","./src/API"]
         ],
         "extensions": [
           ".js",

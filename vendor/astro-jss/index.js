@@ -1012,6 +1012,16 @@ export default {
     '.a-toggle.neptune>input[type=checkbox]:not(:disabled):hover~.a-toggle__shape:before': {
       backgroundColor: 'var(--color-neptune-200)',
     },
+    /** mars-to-neptune toggle */
+    '.a-toggle.mars-neptune>input[type=checkbox]:not(checked)~.a-toggle__shape:before': {
+      backgroundColor: 'var(--color-mars-400)',
+    },
+    '.a-toggle.mars-neptune>input[type=checkbox]:checked~.a-toggle__shape:before': {
+      backgroundColor: 'var(--color-neptune-400)',
+    },
+    '.a-toggle.mars-neptune>input[type=checkbox]:not(:disabled):hover~.a-toggle__shape:before': {
+      backgroundColor: 'var(--color-neptune-300)',
+    },
     /** default */
     '.a-toggle>input[type=checkbox]:checked~.a-toggle__shape:after': {
       top: '1px',
@@ -1027,11 +1037,16 @@ export default {
     '.a-toggle>input[type=checkbox]:focus~.a-toggle__shape:before': {
       boxShadow: '0 0 0 3px rgba(21, 156, 228, .4)',
     },
+    /** off default */
     '.a-toggle>input[type=checkbox]:not(:disabled):hover~.a-toggle__shape:before': {
       backgroundColor: '#3db5eb',
     },
     '.a-toggle>input[type=checkbox]:not(:checked):not(:disabled):hover~.a-toggle__shape:before': {
       backgroundColor: '#afbec9',
+    },
+    /** mars-to-neptune toggle */
+    '.a-toggle.mars-neptune>input[type=checkbox]:not(:checked):not(:disabled):hover~.a-toggle__shape:before': {
+      backgroundColor: 'var(--color-mars-300)',
     },
     '.a-input': {
       position: 'relative',

@@ -51,7 +51,8 @@ export default function (env) {
       extensions: [".js", ".jsx", ".json"],
       alias: {
         "@vendor": path.resolve(ROOT_PATH, "vendor"),
-        "@utils": path.resolve(ROOT_PATH, "src/utils")
+        "@utils": path.resolve(ROOT_PATH, "src/utils"),
+        "@API": path.resolve(ROOT_PATH, "src/API/index.js"),
       }
     },
     module: {

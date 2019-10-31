@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
  */
 const Button = (props) => {
   const {
-    children, color, className, type,
+    children, color, className, type, disabled,
   } = props;
   let text = children;
   if (children) {
@@ -30,6 +30,7 @@ const Button = (props) => {
       className={`a-btn a-btn--${color} a-btn--medium ${className}`}
       type={type}
       aria-label={`${text}`}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -46,6 +47,7 @@ Button.defaultProps = {
   color: 'uranus',
   className: '',
   type: 'button',
+  disabled: false,
 };
 
 /**
@@ -53,6 +55,7 @@ Button.defaultProps = {
  */
 Button.propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.string,
   color: PropTypes.string,
   type: PropTypes.oneOf(['submit', 'button', 'reset']),

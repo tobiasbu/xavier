@@ -25,7 +25,7 @@ export interface NumberInputProps extends InputProps {
   /**
    * Function to conform value.
    */
-  conform?: (current: NumberInputState) => NumberInputState;
+  conform?: (current: NumberInputState, inputValue: string) => NumberInputState;
 };
 
 /**

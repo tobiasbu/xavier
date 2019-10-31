@@ -1,22 +1,11 @@
 import React from 'react';
 import MaskedInput from 'react-text-mask';
 import { conformToMask } from 'text-mask-core';
-import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
-import NumberInput from '../NumberInput';
 import * as Utils from '@utils';
 
-
-// First, you need to create the `numberMask` with your desired configurations
-const numberMask = createNumberMask({
-  prefix: 'R$ ',
-  decimalSymbol: ',',
-  requireDecimal: true,
-  allowDecimal: true,
-  thousandsSeparatorSymbol: '.',
-  decimalLimit: 2,
-  integerLimit: 16,
-});
+import NumberInput from '../NumberInput';
+import numberMask from '../../commons';
 
 /**
  * Click on control button.
@@ -28,18 +17,13 @@ function onControlClick(state, step) {
   // I just figure out that is annoying to treat edge cases like that.
   // My idea for a 'raw' version of the conformed mask version is mess.
   // We should change this in future urgently.
-  let newRaw = state.raw + step;
-  if (newRaw < 0) {
-    newRaw = 0;
+  let newValue = Utils.str.currencyToFloat(state.conformed) + step;
+  if (newValue < 0) {
+    newValue = 0;
   }
-  const frac = /(?:,(\d*))?$/i.exec(state.conformed);
-  let rawStr = `${newRaw}`;
-  if (frac && frac[1]) {
-    rawStr = `${rawStr},${frac[1]}`;
-  }
-  const r = conformToMask(rawStr, numberMask, state.conformed);
+  const r = conformToMask(Utils.str.toCurrency(newValue), numberMask, state.conformed);
   return {
-    raw: newRaw,
+    raw: newValue,
     conformed: r.conformedValue,
   };
 }
@@ -48,22 +32,26 @@ function onControlClick(state, step) {
  * Convert conformed value to a new input state.
  * @param {NumberInputState | React.Text} state The input state or value.
  */
-function conformedToRaw(state) {
+function conformValue(state) {
   let str = '0';
-  if (typeof state === 'object') {
+  const type = typeof state;
+  if (type === 'object') {
     const { conformed } = state;
     if (Utils.isValid(conformed)) {
       str = conformed;
     }
-  } else {
+  } else if (type === 'string') {
     str = state;
+    if (state.length < 0) {
+      str = '0';
+    }
   }
 
   const c = Utils.str.getCurrency(str);
   const r = conformToMask(c, numberMask, str);
 
   return {
-    raw: parseInt(c, 10),
+    raw: Utils.str.currencyToFloat(c),
     conformed: r.conformedValue,
   };
 }
@@ -95,10 +83,10 @@ const CurrencyInput = (props) => {
             validation={validation}
             errorMessage={errorMessage}
             onControlClick={onControlClick}
-            onChange={(e) => {
+            onChange={(e, newVal) => {
               maskedProps.onChange(e);
               if (onChange) {
-                onChange(e);
+                onChange(e, newVal);
               }
             }}
             forwardedRef={(e) => {
@@ -107,8 +95,7 @@ const CurrencyInput = (props) => {
                 forwardedRef(e);
               }
             }}
-            conform={conformedToRaw}
-            
+            conform={conformValue}
             // eslint-disable-next-line react/jsx-props-no-spreading
             onBlur={maskedProps.onBlur}
           />

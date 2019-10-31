@@ -6,8 +6,9 @@
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "@vendor/*": ["vendor/*"],
-      "@utils/*": ["src/utils/*"]
+      "@vendor/*": ["./vendor/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@API": ["./src/API/index.js"]
     }
   },
   "exclude": ["node_modules", "dist"],

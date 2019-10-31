@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 
 import * as Utils from '@utils';
 
@@ -15,7 +16,7 @@ import useStyle from './style';
  */
 const Toggle = (props) => {
   const {
-    label, disabled, checked, onChange, secondaryLabel, className,
+    label, disabled, checked, onChange, secondaryLabel, className, forwardedRef,
   } = props;
 
   const [isChecked, setChecked] = useState(checked);
@@ -33,8 +34,13 @@ const Toggle = (props) => {
     setChecked(check);
   };
 
+  let name = `${(label || '')}`;
+  if (secondaryLabel) {
+    name = `${name}-${(secondaryLabel || '')}`;
+  }
+
   return (
-    <div className={`${className} a-toggle${disableClass}`}>
+    <div className={`a-toggle mars-neptune ${disableClass}${className}`}>
       <label htmlFor={inputId} id={labelId}>{label}</label>
       <input
         type="checkbox"
@@ -42,6 +48,8 @@ const Toggle = (props) => {
         checked={isChecked}
         aria-labelledby={labelId}
         onChange={onChangeWrap}
+        name={slugify(name, { lower: true })}
+        ref={forwardedRef}
       />
       <span className="a-toggle__shape" />
       {
@@ -65,6 +73,7 @@ Toggle.defaultProps = {
   className: '',
   checked: false,
   disabled: false,
+  forwardedRef: null,
   onChange: null,
 };
 
@@ -77,6 +86,7 @@ Toggle.propTypes = {
   secondaryLabel: PropTypes.string,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  forwardedRef: PropTypes.func,
   onChange: PropTypes.func,
 };
 

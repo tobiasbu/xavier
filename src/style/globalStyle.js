@@ -3,8 +3,7 @@ import preset from 'jss-preset-default';
 
 import normalize from '@vendor/normalize-jss';
 import astro from '@vendor/astro-jss';
-
-import generateId from '../components/generateId';
+import { generateId } from '@utils/generateHash';
 
 const presetJss = preset();
 const jssOptions = {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import useCallbackRef from '@utils/useCallbackRef';
 import * as Utils from '@utils';
-import * as commons from '../commons';
+import * as commons from '../inputCommons';
 
 import useStyle from '../Input/style';
 import ControlButton from './ControlButton';
@@ -69,11 +69,12 @@ const NumberInput = (props) => {
 
     if (Utils.isValid(elementRef) && focus) {
       elementRef.focus();
+      elementRef.value = newVal.conformed;
+      if (Utils.isValid(onChange)) {
+        onChange(elementRef, newVal);
+      }
     }
     setValue(newVal);
-    if (Utils.isValid(onChange)) {
-      onChange(e);
-    }
   };
 
   const onKeyUp = () => {
@@ -105,7 +106,7 @@ const NumberInput = (props) => {
       };
     }
     if (Utils.isValid(onChange)) {
-      onChange(e);
+      onChange(e, val);
     }
     setValue(val);
   };
@@ -137,7 +138,7 @@ const NumberInput = (props) => {
       </label>
       <ControlButton disabled={disabled} onClick={(e) => onCtrlClick(e, -1)} ariaLabel="Incrementar valor" />
       <ControlButton plusSign disabled={disabled} onClick={(e) => onCtrlClick(e, 1)} ariaLabel="Decrementar valor" />
-      <span className={`a-input__error ${classes.errorMessage}`}>{errorMessage}</span>
+      <span className={`a-input__error ${classes.errorMessage}`} aria-live="polite">{errorMessage}</span>
     </div>
   );
 };

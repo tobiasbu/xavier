@@ -7,7 +7,7 @@ import { splitCurrency } from '@utils/stringUtils';
 export function validateCurrency(current) {
   const r = splitCurrency(current);
   if (r.denominator === 0 && r.numerator === 0) {
-    return '"Zero" reais não existe :P. Por favor insira um valor válido.';
+    return '"Zero" reais não existe :P. Por favor, insira um valor válido.';
   }
   return true;
 }

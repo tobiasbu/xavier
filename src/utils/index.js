@@ -1,5 +1,5 @@
 import { getValue, isValid } from './valueEvaluation';
-import generateHash from './generateHash';
+import { generateHash, generateId } from './generateHash';
 import * as str from './stringUtils';
 
 /**
@@ -9,5 +9,6 @@ export {
   getValue,
   isValid,
   generateHash,
+  generateId,
   str,
 };

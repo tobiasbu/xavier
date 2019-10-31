@@ -4,15 +4,15 @@ const useStyle = createUseStyles({
   headerContainer: {
     position: 'relative',
     height: '100%',
-    maxHeight: 161,
-    minHeight: 161,
+    maxHeight: 185,
+    minHeight: 185,
     '& h3': {
       margin: 0,
       lineHeight: 1,
     },
   },
   headerInner: {
-    padding: '3.5rem 0 0',
+    padding: '4.5rem 0 0',
     margin: 'auto',
   },
 });

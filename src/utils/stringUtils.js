@@ -1,3 +1,6 @@
+import { conformToMask } from 'text-mask-core';
+import numberMask from '../components/commons';
+
 import { isValid } from './valueEvaluation';
 
 /**
@@ -60,6 +63,7 @@ export function getCurrency(str) {
 /**
  * Split a currency value into `denominator` and `numerator` parts.
  * @param {string | number} str The currency
+ * @return { {numerator: number, denominator: number  }}
  */
 export function splitCurrency(str) {
   let convert = str;
@@ -86,4 +90,54 @@ export function splitCurrency(str) {
     numerator,
     denominator,
   };
+}
+
+/**
+ * Convert currency string to float value
+ * @param {string} str Currency
+ */
+export function currencyToFloat(str) {
+  const match = /([0-9.]*)(?:,(\d*))?$/i.exec(str);
+  if (!isValid(match)) {
+    return 0;
+  }
+  let numerator = match[1].replace(/\./g, '');
+  if (numerator) {
+    numerator = parseInt(numerator, 10);
+  }
+
+  let denominator = match[2] || '0';
+  if (denominator) {
+    denominator = parseInt(denominator, 10);
+  }
+
+  return parseFloat(`${numerator}.${denominator}`);
+}
+
+/**
+ * Convert string or number to valid currency (R$ only)
+ * @param {string | number} value Value to convert
+ */
+export function toCurrency(value) {
+  const type = typeof value;
+  let str = value;
+  let numer = str;
+  let denom = '';
+  if (type === 'number') {
+    str = value.toString();
+    const split = str.split('.');
+    [numer, denom] = split;
+  }
+  if (!numer) {
+    numer = '0';
+  }
+  if (!denom || denom.length <= 0) {
+    denom = '00';
+  }
+  if (denom.length === 1) {
+    denom = `${denom}0`;
+  }
+
+  const r = conformToMask(`R$ ${numer},${denom}`, numberMask);
+  return r.conformedValue;
 }

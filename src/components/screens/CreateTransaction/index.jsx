@@ -1,6 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { useState } from 'react';
 import useForm from 'react-hook-form';
+import { addTransaction } from '@API';
 
 import Button from '../../basic/Button';
 import Input from '../../basic/Input';
@@ -20,22 +21,23 @@ import * as validation from './validation';
  */
 const CreateTransaction = () => {
   const {
-    register, handleSubmit, errors, reset,
+    register, handleSubmit, errors, formState,
   } = useForm();
   const classes = useStyle();
   const [value, setValue] = useState(0);
+  const [isDebit, setDebit] = useState(false);
 
+  // On form submit
   const onSubmit = (data, e) => {
     e.preventDefault();
+    addTransaction(data.valor, data.descricao, data['credito-debito']);
+    e.target.reset();
     setValue(0);
-    reset({
-      descricao: '',
-      valor: 0,
-    });
   };
 
   const descError = validation.checkError(errors.descricao, 'Por favor, insira uma descrição para sua transação.');
   const currencyError = validation.checkError(errors.valor, 'Por favor, insira uma valor válido.');
+  const buttonColor = (isDebit) ? 'neptune' : 'mars';
 
   return (
     <Content>
@@ -67,15 +69,16 @@ const CreateTransaction = () => {
             value={value}
             validation={currencyError.valid}
             errorMessage={currencyError.message}
-            onChange={(e) => { setValue(e.currentTarget.value); }}
+            onChange={(e, inputValue) => setValue(inputValue.conformed)}
           />
           <Toggle
             label="Crédito"
             secondaryLabel="Débito"
             className="field-full"
-            forwardedRef={register()}
+            forwardedRef={register}
+            onChange={(checked) => { setDebit(checked); }}
           />
-          <Button color="neptune" className={classes.registerButton} type="submit">Cadastrar</Button>
+          <Button color={buttonColor} className={classes.registerButton} type="submit" disabled={formState.isSubmitting}>Cadastrar</Button>
         </form>
       </main>
     </Content>
