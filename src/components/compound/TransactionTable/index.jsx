@@ -27,9 +27,9 @@ const columnsDescriptor = [
     // eslint-disable-next-line react/prop-types
     Cell: () => (
       // eslint-disable-next-line react/prop-types
-      <span role="img" aria-label="Remover transação.">
-       👉
-      </span>
+      <button className="a-btn a-btn--ghost-mars a-btn--medium a-btn--icon" type="button">
+        <i className="a-icon a-icon--trash a-icon--size-medium" />
+      </button>
     ),
   },
 ];

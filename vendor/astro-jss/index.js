@@ -332,8 +332,8 @@ export default {
       maskImage: 'url(assets/icons/document.svg)',
     },
     '.a-icon--trash': {
-      WebkitMaskImage: 'url(assets/icons/trash.svg)',
-      maskImage: 'url(assets/icons/trash.svg)',
+      WebkitMaskImage: `url(${ICONS.trash})`,
+      maskImage: `url(${ICONS.trash})`,
     },
     '.a-icon--cake': {
       WebkitMaskImage: 'url(assets/icons/cake.svg)',
@@ -809,8 +809,8 @@ export default {
     },
     '.a-btn--ghost-mars:focus:not(:disabled):not(.a-btn--disabled), .a-btn--ghost-mars:hover:not(:disabled):not(.a-btn--disabled)': {
       color: '#dd676b',
-      backgroundColor: '#f6f7f8',
-      borderColor: '#f6f7f8',
+      // backgroundColor: '#f6f7f8',
+      // borderColor: '#f6f7f8',
     },
     '.a-btn--ghost-mars:active:not(:disabled):not(.a-btn--disabled)': {
       color: '#ac3c40',
@@ -871,7 +871,10 @@ export default {
     '.a-btn--ghost-earth:active:not(:disabled):not(.a-btn--disabled) .a-icon': {
       backgroundColor: '#276f2d',
     },
-    '.a-btn--ghost-mars .a-icon': { backgroundColor: '#d45459' },
+    '.a-btn--ghost-mars .a-icon': {
+      // backgroundColor: '#d45459'
+      backgroundColor: 'var(--color-moon-900)',
+    },
     '.a-btn--ghost-mars:focus:not(:disabled):not(.a-btn--disabled) .a-icon, .a-btn--ghost-mars:hover:not(:disabled):not(.a-btn--disabled) .a-icon': {
       backgroundColor: '#dd676b',
     },
