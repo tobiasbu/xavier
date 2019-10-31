@@ -28,12 +28,18 @@ const globals = {
     },
     a: {
       textDecoration: 'none',
+      color: 'var(--color-neptune-600)',
     },
     p: {
       fontFamily: 'Lato, sans-serif',
       fontSize: 'var(--font-size-2base)',
       fontWeight: 400,
       margin: '0.8rem 0 1rem',
+    },
+    '.field-full': {
+      width: '100%',
+      display: 'block',
+      margin: '1.5rem 0',
     },
   },
 };

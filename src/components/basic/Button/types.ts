@@ -16,4 +16,12 @@ export interface ButtonProps {
    * Button text
    */
   children?: string;
+  /**
+   * Custom class name for button container.
+   */
+  className?: string;
+  /**
+   * Button type
+   */
+  type?: 'button' | 'submit' | 'reset';
 }

@@ -5,6 +5,7 @@ const useStyle = createUseStyles({
     position: 'relative',
     height: '100%',
     maxHeight: 161,
+    minHeight: 161,
     '& h3': {
       margin: 0,
       lineHeight: 1,

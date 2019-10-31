@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import useStyle from './style';
 
@@ -16,11 +16,17 @@ const Option = (props) => {
 
   const classes = useStyle();
   const selectedClass = (selected) ? classes.optionSelected : '';
+  const ariaCurrent = (selected) ? 'true' : 'page';
 
   return (
-    <Link to={link} className={`${classes.optionWrapper} ${selectedClass}`} aria-label={`${children}`}>
+    <NavLink
+      to={link}
+      className={`${classes.optionWrapper} ${selectedClass}`}
+      aria-label={`${children}`}
+      aria-current={ariaCurrent}
+    >
       {children}
-    </Link>
+    </NavLink>
   );
 };
 

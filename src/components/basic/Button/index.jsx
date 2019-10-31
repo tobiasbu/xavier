@@ -11,7 +11,9 @@ import PropTypes from 'prop-types';
  * @param { ButtonProps } props Button properties
  */
 const Button = (props) => {
-  const { children, color } = props;
+  const {
+    children, color, className, type,
+  } = props;
   let text = children;
   if (children) {
     text = children.trim();
@@ -21,9 +23,12 @@ const Button = (props) => {
   }
 
   return (
+    // Eslint guys sometimes...:
+    // https://github.com/yannickcr/eslint-plugin-react/issues/1555
+    // eslint-disable-next-line react/button-has-type
     <button
-      className={`a-btn a-btn--${color} a-btn--medium`}
-      type="button"
+      className={`a-btn a-btn--${color} a-btn--medium ${className}`}
+      type={type}
       aria-label={`${text}`}
     >
       {text}
@@ -39,14 +44,18 @@ Button.defaultProps = {
   // By the way, this song is from Led Zeppelin. (DON'T FORGET TO REMOVE THIS)
   children: 'Ramble on and now\'s the time, the time is now, to sing my song...',
   color: 'uranus',
+  className: '',
+  type: 'button',
 };
 
 /**
  * Button prop types
  */
 Button.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.string,
   color: PropTypes.string,
+  type: PropTypes.oneOf(['submit', 'button', 'reset']),
 };
 
 export default Button;

@@ -20,6 +20,7 @@ const ControlButton = (props) => {
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
+      tabIndex={-1}
     >
       <i className={`a-icon a-icon--${iconName} a-icon--size-small`} />
     </button>

@@ -1,9 +1,13 @@
 import jss from 'jss';
+import MediaQueries from '../../../style/mediaQueries';
 
 const style = jss.createStyleSheet({
   sidebarWrapper: {
     width: 320,
     position: 'relative',
+    [MediaQueries.large]: {
+      display: 'none',
+    },
   },
 
   sidebarContent: {

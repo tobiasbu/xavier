@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 
+import useCallbackRef from '@utils/useCallbackRef';
 import * as Utils from '@utils';
 import * as commons from '../commons';
 
@@ -19,17 +21,13 @@ import useStyle from './style';
  */
 const Input = (props) => {
   const {
-    label, value, disabled, validation, placeholder, forwardedRef, onInput, onChange,
+    label, value, disabled, required, validation, placeholder, forwardedRef,
+    errorMessage, onInput, onChange,
   } = props;
 
   const classes = useStyle();
   const [isLabelFloating, setLabelFloat] = useState(commons.shouldLabelFloat(props));
-
-  let ref = forwardedRef;
-  if (!Utils.isValid(ref)) {
-    ref = useRef(null);
-  }
-
+  const [elementRef, setRef] = useCallbackRef();
   const disabledClass = (disabled) ? ' a-input--disabled' : '';
   const validationClass = commons.getValidationClass(validation);
 
@@ -37,7 +35,10 @@ const Input = (props) => {
   const labelId = Utils.generateHash(props, 'm-l-');
 
   const onKeyUp = () => {
-    const r = commons.shouldLabelFloat(props, ref.current.value);
+    const r = commons.shouldLabelFloat(props, elementRef);
+    if (isLabelFloating === r) {
+      return;
+    }
     setLabelFloat(r);
   };
 
@@ -51,11 +52,26 @@ const Input = (props) => {
         onInput={onInput}
         onChange={onChange}
         onKeyUp={onKeyUp}
-        ref={ref}
         id={inputId}
         aria-labelledby={labelId}
+        required={required}
+        aria-required={required ? 'true' : 'false'}
+        name={label ? slugify(label, { lower: true }) : ''}
+        ref={(e) => {
+          if (forwardedRef) {
+            forwardedRef(e);
+          }
+          setRef(e);
+        }}
       />
-      <label className={isLabelFloating ? 'a-input__label--floating' : ''} id={labelId} htmlFor={inputId}>{label}</label>
+      <label
+        className={isLabelFloating ? 'a-input__label--floating' : ''}
+        id={labelId}
+        htmlFor={inputId}
+      >
+        {label}
+      </label>
+      <span className={`a-input__error ${classes.errorMessage}`}>{errorMessage}</span>
     </div>
   );
 };
@@ -67,7 +83,9 @@ Input.defaultProps = {
   label: 'Standard',
   value: '',
   disabled: false,
+  required: false,
   validation: null,
+  errorMessage: '',
   placeholder: null,
   forwardedRef: null,
   onInput: null,
@@ -81,7 +99,9 @@ Input.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  required: PropTypes.bool,
   validation: PropTypes.bool,
+  errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
   onInput: PropTypes.func,
   onChange: PropTypes.func,

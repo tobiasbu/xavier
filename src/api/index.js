@@ -1,5 +1,19 @@
+let transactions;
+let loaded = false;
 
-export default function createTransaction(value, description) {
+export function loadTransactions() {
+  const transStorage = localStorage.getItem('transactions');
+  if (Array.isArray(transStorage)) {
+    transactions = transStorage;
+  } else {
+    transactions = [];
+    localStorage.setItem('transactions', []);
+  }
+  loaded = true;
+  return transactions;
+}
+
+export function createTransaction(value, description) {
   const hash = 0;
   return {
     value,
@@ -7,4 +21,12 @@ export default function createTransaction(value, description) {
     hash,
     date: new Date(Date.now()).toUTCString(),
   };
+}
+
+export function getTransactions() {
+  if (!loaded) {
+    return loadTransactions();
+  }
+
+  return transactions;
 }

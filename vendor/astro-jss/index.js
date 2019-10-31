@@ -172,8 +172,8 @@ export default {
       maskImage: 'url(assets/icons/chat.svg)',
     },
     '.a-icon--alert': {
-      WebkitMaskImage: `url(${alert})`,
-      maskImage: `url(${alert})`,
+      WebkitMaskImage: `url(${ICONS.alertSymbol})`,
+      maskImage: `url(${ICONS.alertSymbol})`,
     },
     '.a-icon--circle-check': {
       WebkitMaskImage: 'url(assets/icons/circle-check.svg)',
@@ -1265,8 +1265,8 @@ export default {
       height: '32px',
       content: '""',
       backgroundColor: '#d45459',
-      WebkitMaskImage: `url(${alert})`,
-      maskImage: `url(${alert})`,
+      WebkitMaskImage: `url(${ICONS.alertSymbol})`,
+      maskImage: `url(${ICONS.alertSymbol})`,
     },
     '.a-input>.a-input__error': {
       position: 'relative',
