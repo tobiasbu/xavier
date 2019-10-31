@@ -1,5 +1,9 @@
 import * as Utils from '@utils';
 
+
+/**
+* @type {Transaction[]}
+*/
 let transactions;
 let loaded = false;
 
@@ -18,7 +22,7 @@ export function loadTransactions() {
       }
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.warn('Magnetos API: Could not load transactions. Transactions will be re-created. Reason:', e);
+      console.warn('Xavier API: Could not load transactions. Transactions will be re-created. Reason:', e);
     }
   }
   if (failed) {
@@ -27,6 +31,17 @@ export function loadTransactions() {
   }
   loaded = true;
   return transactions;
+}
+
+export function saveTransactions(transList = undefined) {
+  let list = transList;
+  if (!list) {
+    if (!loaded) {
+      loadTransactions();
+    }
+    list = transactions;
+  }
+  localStorage.setItem('transactions', JSON.stringify(list));
 }
 
 /**
@@ -50,6 +65,72 @@ export function addTransaction(value, description, debit) {
   t.hash = hash;
   transactions = [...transactions, t];
   localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
+/**
+ * Remove a transaction.
+ * @param {Transaction} trans Transaction to remove
+ * @return {boolean} True if was successfully removed, otherwise false.
+ */
+export function removeTransaction(trans) {
+  if (!loaded) {
+    loadTransactions();
+  }
+  let index = -1;
+  // filter, some, can be alternatives
+  // like: // transactions = transactions.filter((t) => t.hash !== trans.hash);
+  for (let i = 0; i < transactions.length; i += 1) {
+    if (trans.hash === transactions[i].hash) {
+      index = i;
+      break;
+    }
+  }
+  if (index !== -1) {
+    transactions.splice(index, 1);
+    transactions = [...transactions];
+    saveTransactions(transactions);
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Get total value of the transactions.
+ */
+export function getTotalValue() {
+  if (!loaded) {
+    loadTransactions();
+  }
+  if (transactions.length <= 0) {
+    return 0;
+  }
+  return transactions.reduce((prev, current) => prev + current.value, 0);
+}
+
+/**
+ * Return the total value filtered by of `debit`, `credit` and `total`.
+ */
+export function getTotalValueByType() {
+  if (!loaded) {
+    loadTransactions();
+  }
+  if (transactions.length <= 0) {
+    return 0;
+  }
+  let credit = 0;
+  let debit = 0;
+  for (let i = 0; i < transactions.length; i += 1) {
+    if (transactions[i].debit) {
+      debit += transactions[i].value;
+    } else {
+      credit += transactions[i].value;
+    }
+  }
+  return {
+    credit,
+    debit,
+    total: credit + debit,
+  };
 }
 
 /**

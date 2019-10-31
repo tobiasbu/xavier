@@ -6,7 +6,7 @@ We are using the branch model based in [Short-Lived Feature Branches](https://tr
 - Fork the project to your GitHub account. 
 - From your fork, clone the repository to your machine
 
-Make sure to stay tuned for releases of the project and don't forget to update your fork. Also please read our [Contribution Guide](https://github.com/tobiasbu/magnetos/blob/master/docs/CONTRIBUTING.MD) to maintain our standards.
+Make sure to stay tuned for releases of the project and don't forget to update your fork. Also please read our [Contribution Guide](https://github.com/tobiasbu/xavier/blob/master/docs/CONTRIBUTING.MD) to maintain our standards.
 
 ## Steps
 
@@ -37,18 +37,18 @@ Our branch system is very simple:
 
     Otherwise, is totally new one use `feature/name_of_feature` (eg: `feature/toast_notification`).
 
-- `break` - for changes that will break previous version of the Magnetos.
+- `break` - for changes that will break previous version of the Xavier.
     For `break` branches follow the same rules as `feature`.
 
 3. Start to develop!
 
-**Don't forget to read our [Contribution Guide](https://github.com/tobiasbu/magnetos/blob/master/docs/CONTRIBUTING.MD)**.
+**Don't forget to read our [Contribution Guide](https://github.com/tobiasbu/xavier/blob/master/docs/CONTRIBUTING.MD)**.
 
 ## Pull Requests
 
-Once you have finished your code, the next step is to make a Pull Request. Go to our [Pull Request](https://github.com/tobiasbu/magnetos/pulls) page and create a new Pull Request from your fork.
+Once you have finished your code, the next step is to make a Pull Request. Go to our [Pull Request](https://github.com/tobiasbu/xavier/pulls) page and create a new Pull Request from your fork.
 
-To maintain readability describe the requested topics according to type of PR. You can check in our [templates](https://github.com/tobiasbu/magnetos/tree/master/.github/ISSUE_TEMPLATE) which topics you need to fill.
+To maintain readability describe the requested topics according to type of PR. You can check in our [templates](https://github.com/tobiasbu/xavier/tree/master/.github/ISSUE_TEMPLATE) which topics you need to fill.
 
 Each PR type must have at the beginning one of the following tags.
 
@@ -56,7 +56,7 @@ Tag | Description
 --- | --- 
 [FIX] | for bug fixing. 
 [FEATURE]  | for new feature 
-[BREAK] | for changes that will break Magnetos
+[BREAK] | for changes that will break Xavier
 
 At the end of the title, insert the issue ID in parentheses. (eg: `(9874)`).
 

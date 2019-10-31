@@ -16,9 +16,9 @@ const useStyle = createUseStyles({
       margin: '0 auto',
     },
     [MediaQueries.small]: {
-      maxWidth: 'auto',
+      maxWidth: '100%',
       width: '100%',
-      margin: '0 2rem',
+      padding: '0 2rem',
     },
   },
 });

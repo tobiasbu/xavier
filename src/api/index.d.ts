@@ -2,7 +2,7 @@
 /**
  * Transaction descriptor
  */
-interface Transaction {
+declare interface Transaction {
   value: number;
   description: string;
   debit: boolean;
@@ -11,7 +11,7 @@ interface Transaction {
 }
 
 /**
- * Magnetos API
+ * Xavier API
  */
 declare namespace API {
   /**
@@ -31,6 +31,13 @@ declare namespace API {
    * Get transaction from database.
    */
   declare function getTransactions(): Transaction[];
+
+  /**
+ * Remove a transaction.
+ * @param {Transaction} trans Transaction to remove
+ * @return {boolean} True if was successfully removed, otherwise false.
+ */
+  declare function removeTransaction(trans: Transaction): boolean;
 }
 
 export = API;

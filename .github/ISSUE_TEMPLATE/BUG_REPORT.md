@@ -3,7 +3,7 @@ name: "\U0001F41B Bug report"
 about: Create a report to help us improve
 ---
 <!--
-Thank you for reporting a possible bug in Magnetos.
+Thank you for reporting a possible bug in Xavier.
 
 Please fill in as much of the template below as you can.
 -->

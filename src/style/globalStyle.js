@@ -36,7 +36,6 @@ const globals = {
       margin: '0.8rem 0 1rem',
     },
     '.field-full': {
-      width: '100%',
       display: 'block',
       margin: '1.5rem 0',
     },

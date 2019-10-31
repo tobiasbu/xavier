@@ -25,7 +25,7 @@ const mapOption = (route, index, selected) => (
 );
 
 /**
- * Magnetos side bar menu.
+ * Xavier side bar menu.
  *
  * I could totally use pure function here.
  * But here I'm testing the JSS style `attach` and  `detach` functions.

@@ -21,6 +21,7 @@ const ControlButton = (props) => {
       disabled={disabled}
       aria-label={ariaLabel}
       tabIndex={-1}
+      title={ariaLabel}
     >
       <i className={`a-icon a-icon--${iconName} a-icon--size-small`} />
     </button>

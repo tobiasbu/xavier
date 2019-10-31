@@ -77,8 +77,17 @@ const CreateTransaction = () => {
             className="field-full"
             forwardedRef={register}
             onChange={(checked) => { setDebit(checked); }}
+            title="Crédito ou Débito?"
           />
-          <Button color={buttonColor} className={classes.registerButton} type="submit" disabled={formState.isSubmitting}>Cadastrar</Button>
+          <Button
+            color={buttonColor}
+            className={classes.registerButton}
+            type="submit"
+            disabled={formState.isSubmitting}
+            title="Cadastrar nova transação"
+          >
+            Cadastrar
+          </Button>
         </form>
       </main>
     </Content>

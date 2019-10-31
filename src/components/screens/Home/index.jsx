@@ -4,7 +4,7 @@ import Header from '../../container/Header';
 import Title from '../../basic/Title';
 
 /**
- * Magnetos home page.
+ * Xavier home page.
  */
 const Home = () => {
   const total = 0;

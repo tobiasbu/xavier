@@ -25,7 +25,7 @@ const NumberInput = (props) => {
   const {
     label, disabled, validation, placeholder, forwardedRef,
     onInput, onChange, onControlClick, onBlur,
-    step, value, conform, errorMessage,
+    step, value, conform, errorMessage, autocomplete,
   } = props;
 
   // Hooks
@@ -132,12 +132,13 @@ const NumberInput = (props) => {
         onBlur={onBlur}
         id={inputId}
         name={label.toLowerCase()}
+        autoComplete={autocomplete}
       />
       <label className={isLabelFloating ? 'a-input__label--floating' : ''} id={labelId} htmlFor={inputId}>
         {label}
       </label>
-      <ControlButton disabled={disabled} onClick={(e) => onCtrlClick(e, -1)} ariaLabel="Incrementar valor" />
-      <ControlButton plusSign disabled={disabled} onClick={(e) => onCtrlClick(e, 1)} ariaLabel="Decrementar valor" />
+      <ControlButton disabled={disabled} onClick={(e) => onCtrlClick(e, -1)} ariaLabel="Decrementar valor" />
+      <ControlButton plusSign disabled={disabled} onClick={(e) => onCtrlClick(e, 1)} ariaLabel="Incrementar valor" />
       <span className={`a-input__error ${classes.errorMessage}`} aria-live="polite">{errorMessage}</span>
     </div>
   );
@@ -160,6 +161,7 @@ NumberInput.defaultProps = {
   onControlClick: null,
   onBlur: null,
   conform: null,
+  autocomplete: 'on',
 };
 
 /**
@@ -185,7 +187,7 @@ NumberInput.propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
   ]),
   conform: PropTypes.func,
-
+  autocomplete: PropTypes.oneOf(['on', 'off']),
 };
 
 export default NumberInput;

@@ -1,7 +1,7 @@
 {
-  "name": "magnetos",
+  "name": "xavier",
   "version": "0.0.1",
-  "description": "Magnetos is a bank transaction simulator.",
+  "description": "Xavier is a credit and debit card transaction manager.",
   "main": "index.js",
   "scripts": {
     "start": "npm run clean && node -r esm ./config/dev_server.js --host=local-net",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tobiasbu/magnetos.git"
+    "url": "git+https://github.com/tobiasbu/xavier.git"
   },
   "keywords": [
     "bank",
@@ -21,9 +21,9 @@
   "author": "Tobias Ulrich",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tobiasbu/magnetos/issues"
+    "url": "https://github.com/tobiasbu/xavier/issues"
   },
-  "homepage": "https://github.com/tobiasbu/magnetos#readme",
+  "homepage": "https://github.com/tobiasbu/xavier#readme",
   "dependencies": {
     "dinero.js": "^1.6.0",
     "jss": "^10.0.0",

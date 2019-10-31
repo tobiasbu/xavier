@@ -24,4 +24,8 @@ export interface ButtonProps {
    * Button type
    */
   type?: 'button' | 'submit' | 'reset';
+  /**
+   * Button title.
+   */
+  title: string;
 }

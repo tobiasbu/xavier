@@ -19,7 +19,7 @@ async function main() {
 
   const logger = getLogger(
     {
-      name: 'magnetos-client',
+      name: 'xavier-client',
       timestamp: true,
       symbol: ' \u26A1',
       errorSymbol: ' \u2622',

@@ -28,7 +28,7 @@ export default function (env) {
 
 
   /**
-   * Webpack configuration for Magnetos Client
+   * Webpack configuration for Xavier Client
    * @type { Configuration }
    */
   const config = {

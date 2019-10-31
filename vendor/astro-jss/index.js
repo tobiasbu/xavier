@@ -857,14 +857,18 @@ export default {
     '.a-btn--ghost-uranus:active:not(:disabled):not(.a-btn--disabled) .a-icon': {
       backgroundColor: '#147ec1',
     },
-    '.a-btn--ghost-venus .a-icon': { backgroundColor: '#e078d6' },
+    '.a-btn--ghost-venus .a-icon': {
+      backgroundColor: '#e078d6',
+    },
     '.a-btn--ghost-venus:focus:not(:disabled):not(.a-btn--disabled) .a-icon, .a-btn--ghost-venus:hover:not(:disabled):not(.a-btn--disabled) .a-icon': {
       backgroundColor: '#e78ade',
     },
     '.a-btn--ghost-venus:active:not(:disabled):not(.a-btn--disabled) .a-icon': {
       backgroundColor: '#c763ba',
     },
-    '.a-btn--ghost-earth .a-icon': { backgroundColor: '#469d39' },
+    '.a-btn--ghost-earth .a-icon': {
+      backgroundColor: '#469d39',
+    },
     '.a-btn--ghost-earth:focus:not(:disabled):not(.a-btn--disabled) .a-icon, .a-btn--ghost-earth:hover:not(:disabled):not(.a-btn--disabled) .a-icon': {
       backgroundColor: '#88e967',
     },

@@ -16,7 +16,7 @@ import useStyle from './style';
  */
 const Toggle = (props) => {
   const {
-    label, disabled, checked, onChange, secondaryLabel, className, forwardedRef,
+    label, disabled, checked, onChange, secondaryLabel, className, forwardedRef, title,
   } = props;
 
   const [isChecked, setChecked] = useState(checked);
@@ -50,6 +50,8 @@ const Toggle = (props) => {
         onChange={onChangeWrap}
         name={slugify(name, { lower: true })}
         ref={forwardedRef}
+        aria-checked={isChecked}
+        title={title}
       />
       <span className="a-toggle__shape" />
       {
@@ -82,6 +84,8 @@ Toggle.defaultProps = {
  */
 Toggle.propTypes = {
   label: PropTypes.string,
+  // https://www.davidmacd.com/test/wave-checkbox-aria.html
+  title: PropTypes.string.isRequired,
   className: PropTypes.string,
   secondaryLabel: PropTypes.string,
   checked: PropTypes.bool,
