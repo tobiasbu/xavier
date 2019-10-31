@@ -10,20 +10,22 @@ const useStyle = createUseStyles({
     position: 'relative',
     display: 'block',
     textDecoration: 'none',
-    transition: 'background-color 0.2s ease 0s',
+    transition: 'color 0.2s ease 0s',
     cursor: 'pointer',
-    borderBottom: '1px solid var(--color-space-300)',
+    borderBottom: '1px solid var(--color-space-200)',
     '&:hover': {
-      backgroundColor: 'var(--color-space-300)',
+      color: 'var(--color-mars-400)',
     },
     '&:active': {
-      backgroundColor: 'var(--color-space-400)',
+      color: 'var(--color-mars-600)',
     },
   },
   optionSelected: {
-    backgroundColor: 'var(--color-space-300)',
+    color: 'var(--color-mars-500)',
+    backgroundColor: 'var(--color-space-200)',
     '&:hover': {
-      backgroundColor: 'var(--color-space-300)',
+      // backgroundColor: 'var(--color-space-300)',
+      color: 'var(--color-mars-500)',
     },
   },
 });

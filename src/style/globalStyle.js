@@ -26,8 +26,11 @@ const globals = {
       lineHeight: 1.5,
     },
     a: {
-      textDecoration: 'none',
-      color: 'var(--color-neptune-600)',
+      textDecoration: 'underline',
+      color: 'var(--color-mars-500)',
+      '&:hover': {
+        color: 'var(--color-mars-300)',
+      },
     },
     p: {
       fontFamily: 'Lato, sans-serif',
