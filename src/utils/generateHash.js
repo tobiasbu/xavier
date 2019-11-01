@@ -6,6 +6,7 @@ import { capitalize } from './stringUtils';
  * Class name generator like Aphrodite.
  *
  * Currently `react-jss` is not supporting custom class name generator (bug?)
+ * Update: Fixed...
  * @param {any} rule Class name
  * @param {suffix} sheet Stylesheet
  */
@@ -20,11 +21,11 @@ export function generateHash(key, suffix = '', withTime = false, toHex = true) {
 
 
 /**
- * Class name generator like Aphrodite.
+ * Class name generator like Aphrodite for Xavier project.
  * @param {any} rule  StyleRule
  * @param {any} _sheet StyleSheet
  */
 // eslint-disable-next-line no-unused-vars
 export function generateId(rule, _sheet) {
-  return `m_${capitalize(rule.key.substr(0, 4))}__${generateHash(`${rule.key}`, undefined, true)}`;
+  return `_x_${capitalize(rule.key.substr(0, 4))}__${generateHash(`${rule.key}`, undefined, true)}`;
 }

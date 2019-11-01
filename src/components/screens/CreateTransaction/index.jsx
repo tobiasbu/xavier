@@ -1,6 +1,8 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { useState } from 'react';
 import useForm from 'react-hook-form';
+import { store } from 'react-notifications-component';
+
 import { addTransaction } from '@API';
 
 import Button from '../../basic/Button';
@@ -31,6 +33,25 @@ const CreateTransaction = () => {
     e.preventDefault();
     addTransaction(data.valor, data.descricao, data['credito-debito']);
     e.target.reset();
+    // Fanciness is cool
+    store.addNotification({
+      title: 'Sucesso!',
+      message: 'Transação registrada com sucesso!',
+      type: 'success',
+      container: 'top-right',
+      animationIn: ['animated', 'flipInX'],
+      animationOut: ['animated', 'flipOutY'],
+      dismiss: {
+        duration: 4000,
+        onScreen: true,
+      },
+      slidingEnter: {
+        duration: 750,
+      },
+      slidingExit: {
+        duration: 1000,
+      },
+    });
   };
 
   const descError = validation.checkError(errors.descricao, 'Por favor, insira uma descrição para sua transação.');

@@ -36,7 +36,7 @@ export const columnsDescriptor = [
           onClick={
             () => {
               API.removeTransaction(original);
-              updateTransactions();
+              updateTransactions(original);
             }
           }
           title={`Remover transação "${original.description}."`}

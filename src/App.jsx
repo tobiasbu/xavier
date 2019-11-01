@@ -1,29 +1,28 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-// import { JssProvider } from 'react-jss';
+import { JssProvider } from 'react-jss';
+import ReactNotification from 'react-notifications-component';
 
 import useStyle from './appStyle';
 import RouterSwitcher from './router/routes';
+import { generateId } from '@utils';
 
-// const initialEntries = ['/select-customer'];
+// Should convert this files to jss
+// import 'react-notifications-component/dist/theme.css';
+import 'animate.css/animate.min.css';
 
-// import SideBar from './components/compound/SideBar';
-
-//  {/* <JssProvider jss={jss} id={{ minify: true }}> */}
-//  <div className={`${classes.mainWrapper}`}>
-//  <SideBar />
-//  <CreateTransactionScreen />
-//  </div>
-// {/* </JssProvider> */}
 
 const App = () => {
   const classes = useStyle();
   return (
-    <div className={`a-body ${classes.mainEntry}`} tabIndex={-1} role="group">
-      <MemoryRouter initialEntries={['/']}>
-        <RouterSwitcher />
-      </MemoryRouter>
-    </div>
+    <JssProvider generateId={generateId}>
+      <ReactNotification isMobile />
+      <div className={`a-body ${classes.mainEntry}`} tabIndex={-1} role="group">
+        <MemoryRouter initialEntries={['/']}>
+          <RouterSwitcher isMobile />
+        </MemoryRouter>
+      </div>
+    </JssProvider>
   );
 };
 

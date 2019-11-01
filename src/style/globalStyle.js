@@ -3,6 +3,8 @@ import preset from 'jss-preset-default';
 
 import normalize from '@vendor/normalize-jss';
 import astro from '@vendor/astro-jss';
+import reactNotificationComponent from '@vendor/react-notifications-component-jss';
+
 import { generateId } from '@utils/generateHash';
 
 const presetJss = preset();
@@ -47,4 +49,5 @@ const globals = {
 
 jss.createStyleSheet(normalize).attach();
 jss.createStyleSheet(astro).attach();
+jss.createStyleSheet(reactNotificationComponent).attach();
 jss.createStyleSheet(globals).attach();
