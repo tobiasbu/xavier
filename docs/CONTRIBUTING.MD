@@ -12,9 +12,9 @@ The development team should use the following development techniques and standar
 
 We utilize [TDD](https://en.wikipedia.org/wiki/Test-driven_development) technique to keep the code base error/bug free. 
 
-Sometimes there is already a unit or integration test written for a React component or function. In this case if you will update, please **test** during your coding.
+Sometimes there is already a unit or integration test written for a React component or function. In this case, please **test first**, develop, **test** and develop. Also you are able to rewrite the test according to your needs.
 
-If are using VSCode, we recommend the following extensions:
+If you are using VSCode, we recommend the following extensions:
 
 - [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner)
 - [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) by Orta.
@@ -25,7 +25,7 @@ We are using [Babel](https://babeljs.io/) compiler for our code. No need to use 
 
 Most of our code standard is guaranteed by `.eslintrc` and `.editorconfig` files. Don't disable any rule provided by this two files.
 
-After you develop any xavier components, always run the command your favorite command prompt:
+After you develop any xavier components, always run lint your code. For convenience, you can execute in your favorite command prompt the following script:
 
 ```
 npm run lint
@@ -71,14 +71,14 @@ Make sure to read about the specifications in the following links:
 - [Introduction to ARIA](https://developers.google.com/web/fundamentals/accessibility/semantics-aria)
 - [WAI-ARIA Overview](https://www.w3.org/WAI/standards-guidelines/aria/)
 
-[Chrome](https://www.google.com/intl/en_us/chrome/) browser as very useful extension which report several keys including accessability. Take a look in [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+[Chrome](https://www.google.com/intl/en_us/chrome/) browser has very useful extension which report several keys including accessability. Take a look in [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
 ## Style and Design Guide
 
 We are using the amazing [Astro](https://github.com/magnetis/astro) design system. If will write/update a component please follow the guide described in the previous link.
 
 Since we are using [JSS](https://cssinjs.org/), you will probably need to convert CSS to JSS.
-There some good (but not optimal) tools for this in the internet like this [one](https://transform.tools/css-to-js). `
+There some good (but not optimal) tools for this task in the internet like this [one](https://transform.tools/css-to-js). `
 
 Some of this tools can create invalid characters as example:
 
@@ -92,7 +92,7 @@ const converted = {
 };
 ```
 
-Look at this boy. `\n` character should be a space. Make sure to remove any invalid chars. The JSS parser don't recognize them and your stylesheet will not work.
+Look at this boy: `\n`. This character should be a space. Make sure to remove any invalid chars. The JSS parser don't recognize them and your stylesheet will not work.
 
 ### Tints
 
@@ -107,7 +107,7 @@ We have two main colors that we use based on the Astro system. And most likely y
 ![alt text](http://tobiasbu.github.io/img/neptune.png)
 
 Neptune is not officially part of Astro. It's a custom tint used by xavier.
-You can reference both colors using CSS vars in JSS like with no problems.
+You can reference both colors using CSS vars in JSS (with no problems) like:
 
 ```javascript
 const myStyle = {
@@ -120,4 +120,4 @@ const myStyle = {
 };
 ```
 
-The VSCode marketplace has useful tools to convert CSS. We usually use the [CSS to JSS](https://marketplace.visualstudio.com/items?itemName=infarkt.css-to-jss).
+The VSCode marketplace has useful tools to convert CSS to JSS. We usually use [CSS to JSS](https://marketplace.visualstudio.com/items?itemName=infarkt.css-to-jss).
