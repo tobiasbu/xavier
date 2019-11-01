@@ -4,7 +4,7 @@ First of all, thanks to taking your time to help building **xavier**!
 
 In this document, we present rules and guidelines for contributing to xavier. We are very concerned with Quality Assurance (QA) and accessability and that may seem quite rigid. But that has a reason, software health, productivity and obviously quality. 
 
-Here in xavier, most of developers use [VSCode](https://code.visualstudio.com/) for coding but feel free to choose your editor. Also here you can find some tools and extensions recommendations.
+Here in xavier, most of developers use [VSCode](https://code.visualstudio.com/) for coding but feel free to choose your editor.  In this document we also recommend some tools and extensions.
 
 The development team should use the following development techniques and standards:
 
@@ -12,7 +12,7 @@ The development team should use the following development techniques and standar
 
 We utilize [TDD](https://en.wikipedia.org/wiki/Test-driven_development) technique to keep the code base error/bug free. 
 
-Sometimes there is already a unit or integration test written for a React component or function. In this case, please **test first**, develop, **test** and develop. Also you are able to rewrite the test according to your needs.
+Sometimes there is already a unit or integration test written for a React component or function. In this case, please **test first**, develop, **test** and develop. You are able to rewrite the test according to your needs.
 
 If you are using VSCode, we recommend the following extensions:
 
@@ -25,7 +25,7 @@ We are using [Babel](https://babeljs.io/) compiler for our code. No need to use 
 
 Most of our code standard is guaranteed by `.eslintrc` and `.editorconfig` files. Don't disable any rule provided by this two files.
 
-After you develop any xavier components, always run lint your code. For convenience, you can execute in your favorite command prompt the following script:
+After you develop any xavier component, run `eslint` to your code files. For convenience, you can execute in your favorite command prompt the following script:
 
 ```
 npm run lint
@@ -60,7 +60,7 @@ Our project is organized as follows:
  There is no specific rule for our structure:
  - In the root folder of the project has only configuration files. Do not include anything there.
  - Your probably will work at `src` and `test` folders. So include files only there.
- - Maintain current folder arrangement.
+ - Please maintain current folder arrangement.
 
 ## Accessability
 
