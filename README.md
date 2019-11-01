@@ -2,7 +2,7 @@
 <img src="https://tobiasbu.github.io/img/xavier_logo.png"/>
 </p>
 <br>
-<p align="center" style="font-size: 1.2rem;"><strong>Xavier</strong> is a credit and debit card transaction manager. </p>
+<p align="center" style="font-size: 1.2rem;"><strong>Xavier</strong> is a financial transaction manager. </p>
 
 
 ## Table of contents
@@ -33,7 +33,7 @@ Want test our platform? Check out this steps below. Make sure to install the fol
 - [Node v10.16](https://nodejs.org/en/) - to have node.js in your machine.
 - [npm](https://www.npmjs.com/) - to manage and install packages dependencies
 
-If you are in Windows OS you don't need to install [npm](https://www.npmjs.com/) installed since it came with node.js by default.
+> If you are in Windows OS you don't need to install [npm](https://www.npmjs.com/) since it comes with node.js by default.
 
 After you have cloned this repository, follow the next steps:
 
@@ -58,11 +58,12 @@ http://localhost:3000/
 
 ## Contributing
 
-### Do you have an idea or suggestion?<br/>Or did you found a bug, an error or need help?
+:bulb: Do you have an idea or suggestion?<br/> :bug:  Or did you found a bug, an error or need help?
 
 Create a **[issue](https://github.com/tobiasbu/xavier/issues/new/choose)** and our team will listen to you and will help with solutions. 
 
-### Are you Javascript developer? Want to be part of the development team?
+:metal: Are you Javascript developer?<br />
+:metal: Want to be part of the development team?
 
 _Make yourself at home_! [Pick a issue](https://github.com/tobiasbu/xavier/issues), code and [create a Pull Request](https://github.com/tobiasbu/xavier/pulls).
 
@@ -104,7 +105,7 @@ Take a look:
    - [airbnb style guide](https://github.com/airbnb/javascript)
    - [plugin for Jest](https://github.com/jest-community/eslint-plugin-jest)
 - General tests with [Jest](https://jestjs.io/)
-- React components tests with Jest, [Enzyme](https://airbnb.io/enzyme/) and [react-test-renderer](https://pt-br.reactjs.org/docs/test-renderer.html).
+- React components tested with Jest, [Enzyme](https://airbnb.io/enzyme/) and [react-test-renderer](https://pt-br.reactjs.org/docs/test-renderer.html).
 
 And many, many others...
 
@@ -116,4 +117,4 @@ Created by [Tobias Ulrich](https://github.com/tobiasbu) and License based in [MI
 
 
 
-~~ :zap: ~~
+:zap:
