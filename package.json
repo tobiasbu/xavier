@@ -4,11 +4,13 @@
   "description": "Xavier is a credit and debit card transaction manager.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run clean && node -r esm ./config/dev_server.js --host=local-net",
+    "start": "npm run clean && node -r esm ./config/dev_server.js",
+    "start-local": "npm run clean && node -r esm ./config/dev_server.js --HOST=local",
     "clean": "rm -fr dist",
+    "build": "npm run clean && webpack --config ./config/webpack.config.js --env.PROD",
     "test": "jest --verbose",
     "test-renew": "jest --verbose -u",
-    "lint": "eslint ."
+    "lint": "eslint src --ext .js,.jsx"
   },
   "repository": {
     "type": "git",
@@ -54,6 +56,7 @@
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
+    "cors": "^2.8.5",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -71,8 +74,10 @@
     "express": "^4.17.1",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "ip": "^1.1.5",
     "jest": "^24.9.0",
     "jest-svg-transformer": "^1.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "random-words": "^1.1.0",
     "react-hot-loader": "^4.12.15",
     "react-test-renderer": "^16.11.0",

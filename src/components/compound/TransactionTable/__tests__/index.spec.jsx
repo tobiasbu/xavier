@@ -23,10 +23,13 @@ describe('TransactionTable', () => {
         hash: '7890123',
         timestamp: 3364879,
         value: 1081.50,
-      }
-    ]
+      },
+    ];
 
-    const component = shallow(<TransactionTable transactions={transactions} updateTransactions={() => {}} />);
+    const component = shallow(<TransactionTable
+      transactions={transactions}
+      updateTransactions={() => { }}
+    />);
     expect(toJSON(component)).toMatchSnapshot();
   });
 });

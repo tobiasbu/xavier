@@ -1,17 +1,15 @@
 import * as path from 'path';
 import express from 'express';
 import webpack from 'webpack';
+import cors from 'cors';
 
-
-// import ip from 'ip';
-// import cors from 'cors';
-// const opn = require('opn');
 import { GracefulShutdownManager } from '@moebius/http-graceful-shutdown';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 
 import webpackConfigFn from './webpack.config';
 import stats from './stats';
+import getProcessArgs from './getProcessArgs';
 
 import getLogger from '../vendor/getLogger';
 
@@ -26,6 +24,7 @@ async function main() {
       bgPrefix: false,
     });
 
+  const ARGS = getProcessArgs(process.argv);
 
   process.on("unhandledRejection", (e) => {
     logger.error(`Unhandled rejection `, e.stack || e);
@@ -46,7 +45,7 @@ async function main() {
 
   // Get our configuration
   const config = webpackConfigFn({
-    mode: 'development',
+    mode: ARGS.PRODUCTION ? 'production' : 'development',
   });
 
   // Webpack compiler
@@ -91,17 +90,26 @@ async function main() {
     });
 
     const expressApp = express();
+
+    // Will run in local network
+    if (ARGS.IS_LOCAL_NET) {
+      app.use(cors({
+        origin: '*',
+        optionsSuccessStatus: 200
+      }));
+    }
+
     expressApp.use(devMiddleware);
     expressApp.use(hotMiddleware);
     expressApp.use(express.static(DIST_PATH));
 
     const port = 3000;
-    const server = expressApp.listen(port, 'localhost', (error) => {
+    const server = expressApp.listen(port, ARGS.HOST, (error) => {
       if (error) {
         logger.error('Could not start dev server:', error.join("\n\n"));
         return reject(error);
       }
-      logger.log('Dev server listening in localhost port ' + port);
+      logger.log(`Dev server listening in ${ARGS.HOST} port ${port}`);
       resolve({ server, devMiddleware });
     });
 

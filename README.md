@@ -58,7 +58,7 @@ http://localhost:3000/
 
 ## Contributing
 
-:bulb: Do you have an idea or suggestion?<br/> :bug:  Or did you found a bug, an error or need help?
+:bulb: Do you have an idea or suggestion?<br/>:bug: Or did you found a bug, an error or need help?
 
 Create a **[issue](https://github.com/tobiasbu/xavier/issues/new/choose)** and our team will listen to you and will help with solutions. 
 
@@ -99,7 +99,7 @@ Take a look:
 - _Galactic_ style with [Astro](https://github.com/magnetis/astro)
 - CSS-in-JS with [JSS](https://cssinjs.org/?v=v10.0.0)
 
-#### Quality Assurance (QA):
+#### Quality Assurance:
 
 - Linted by [ESLint](https://eslint.org/) with:
    - [airbnb style guide](https://github.com/airbnb/javascript)

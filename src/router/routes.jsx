@@ -12,8 +12,6 @@ import CreateTransaction from '../components/screens/CreateTransaction';
 import Home from '../components/screens/Home';
 import Transactions from '../components/screens/Transactions';
 
-
-
 const routerSwitcher = () => {
   const classes = useStyle();
 

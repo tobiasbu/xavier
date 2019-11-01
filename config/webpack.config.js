@@ -2,6 +2,9 @@ import webpack from 'webpack';
 import path from 'path';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+import getCssLoader from './getCssLoader';
 
 /**
  * @typedef { import("webpack").Configuration } Configuration
@@ -13,13 +16,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 export default function (env) {
 
   // Declare config constants
-  const MODE = 'development';
+  const MODE = (env.prod) ? 'production' : 'development';
   const isProduction = (MODE !== 'development');
 
   // Paths constants
   const ROOT_PATH = path.join(__dirname, '..');
   const ENTRY_PATH = path.join(ROOT_PATH, './src/index.jsx');
-  const OUTPUT_PATH = path.join(ROOT_PATH, './dist');
+  const OUTPUT_PATH = path.join(ROOT_PATH, (isProduction) ? './build' : './dist');
 
   // Hot Middleware
   const HOST = 'localhost';
@@ -45,7 +48,7 @@ export default function (env) {
       hotUpdateChunkFilename: ".hot/[id].[hash].hot-update.js",
       hotUpdateMainFilename: ".hot/[hash].hot-update.json",
       pathinfo: isProduction === false,
-      
+
     },
     resolve: {
       extensions: [".js", ".jsx", ".json"],
@@ -68,7 +71,8 @@ export default function (env) {
         },
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
+          use: getCssLoader(isProduction),
+          //use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
@@ -95,34 +99,74 @@ export default function (env) {
     },
     optimization: {
       minimize: isProduction,
+      splitChunks: {
+        name: false,
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 3,
+          },
+        }
+      }
     },
     node: {
       // Need this when working with express, otherwise the build fails
       __dirname: false,
       __filename: false
     },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin({ multiStep: false }), // enable HMR globally
-      new webpack.NoEmitOnErrorsPlugin(),
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: path.join(ROOT_PATH, "./static/index.html"),
-        cache: isProduction === false,
-      }),
-    ],
+    plugins: [],
     stats: 'errors-warnings',
   };
 
-  const withEslint = false;
+  // Commons plugins
+  config.plugins.push(new HtmlWebpackPlugin({
+    filename: 'index.html',
+    template: path.join(ROOT_PATH, "./static/index.html"),
+    cache: isProduction === false,
+  }));
 
+  if (!isProduction) {
+    config.plugins.push(
+      new webpack.HotModuleReplacementPlugin({ multiStep: false }), // enable HMR globally
+      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(true),
+    );
+  } else {
+    // Optimize
+    config.optimization.minimize = true;
+    config.optimization.minimizer = [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: true,
+          ecma: 5,
+          safari10: true,
+        },
+      })
+    ];
+    // Minify CSS
+    config.plugins.push(
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css',
+      }),
+    );
+  }
+
+
+
+  const withEslint = true;
+  // This is only should not be used if you want to code fast
   if (withEslint) {
     config.module.rules.unshift(
-    {
-      enforce: "pre",
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: "eslint-loader",
-    });
+      {
+        enforce: "pre",
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+      });
   }
 
 
