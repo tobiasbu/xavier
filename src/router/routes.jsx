@@ -4,7 +4,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import useStyle from '../appStyle';
+import useStyle from '../AppStyle';
 
 import SideBar from '../components/compound/SideBar';
 
