@@ -56,7 +56,7 @@ npm run start
 http://localhost:3000/
 ```
 
-For **building instructions** read our [guide here](https://github.com/tobiasbu/xavier/blob/master/docs/BUILIDING.MD)).
+For **building instructions** read our [guide here](https://github.com/tobiasbu/xavier/blob/master/docs/BUILIDING.MD).
 
 ## Contributing
 
