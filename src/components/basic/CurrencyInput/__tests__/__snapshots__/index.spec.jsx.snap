@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Currency Input should render 1`] = `
+<t
+  guide={true}
+  mask={[Function]}
+  render={[Function]}
+/>
+`;

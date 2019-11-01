@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render 1`] = `
+<div
+  className="a-input inputContainer-0-2-1"
+>
+  <input
+    aria-labelledby="m-l-26d0044a"
+    aria-required="false"
+    defaultValue=""
+    disabled={false}
+    id="m-i-26d0044a"
+    name="descricao"
+    onChange={null}
+    onInput={null}
+    onKeyUp={[Function]}
+    placeholder={null}
+    required={false}
+    type="text"
+  />
+  <label
+    className=""
+    htmlFor="m-i-26d0044a"
+    id="m-l-26d0044a"
+  >
+    Descrição
+  </label>
+  <span
+    aria-live="polite"
+    className="a-input__error errorMessage-0-2-2"
+  />
+</div>
+`;

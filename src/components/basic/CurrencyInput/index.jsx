@@ -82,6 +82,6 @@ CurrencyInput.propTypes = { ...NumberInput.propTypes };
 /**
  * Currency default props.
  */
-CurrencyInput.defaultProps = { value: null, ...NumberInput.defaultProps };
+CurrencyInput.defaultProps = { ...NumberInput.defaultProps };
 
 export default CurrencyInput;

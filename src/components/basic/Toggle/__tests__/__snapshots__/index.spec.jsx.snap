@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toogle should render Toogle 1`] = `
+<div
+  className="a-toggle mars-neptune "
+>
+  <label
+    htmlFor="m-i-a6ba504"
+    id="m-l-a6ba504"
+  >
+    Você quer ir ao cinema?
+  </label>
+  <input
+    aria-checked={true}
+    aria-labelledby="m-l-a6ba504"
+    checked={true}
+    id="m-i-a6ba504"
+    name="voce-quer-ir-ao-cinema"
+    onChange={[Function]}
+    title="Marcar um cinema com os amigos?"
+    type="checkbox"
+  />
+  <span
+    className="a-toggle__shape"
+  />
+</div>
+`;

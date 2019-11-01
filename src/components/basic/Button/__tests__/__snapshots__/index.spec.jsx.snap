@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Astro Button common render 1`] = `
+<button
+  aria-label="Ramble on and now s the time, the time is now, to sing my song"
+  className="a-btn a-btn--uranus a-btn--medium "
+  disabled={false}
+  title="Listen to LZ"
+  type="button"
+>
+  Ramble on and now s the time, the time is now, to sing my song
+</button>
+`;
+
+exports[`Astro Button with color 1`] = `
+<button
+  aria-label="Earth"
+  className="a-btn a-btn--earth a-btn--medium "
+  disabled={false}
+  title="Green Button"
+  type="button"
+>
+  Earth
+</button>
+`;

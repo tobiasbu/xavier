@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render 1`] = `
+<header
+  className="headerContainer-0-2-1"
+>
+  <div
+    className="headerInner-0-2-2"
+  >
+    <Title
+      className=""
+      size={3}
+    >
+      xavier is cool and have super powers
+    </Title>
+  </div>
+</header>
+`;

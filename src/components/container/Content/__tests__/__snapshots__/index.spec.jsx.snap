@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content should render 1`] = `
+<div
+  className="contentContainer-0-2-1"
+>
+  <div>
+    Feijão
+    <span>
+      Arroz
+    </span>
+    Mandioca
+  </div>
+</div>
+`;

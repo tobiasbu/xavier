@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Transaction screen should render 1`] = `
+<Content>
+  <Header>
+    Cadastre uma nova transação
+  </Header>
+  <main>
+    <form
+      onSubmit={[Function]}
+    >
+      <p>
+        Preencha os campos a seguir:
+      </p>
+      <Input
+        defaultValue=""
+        disabled={false}
+        errorMessage=""
+        forwardedRef={[Function]}
+        label="Descrição"
+        onChange={null}
+        onInput={null}
+        placeholder="Ex: Compras do Atacado, Manunteção da Cozinha, Fatura do Banco..."
+        required={false}
+        validation={null}
+      />
+      <CurrencyInput
+        defaultValue=""
+        disabled={false}
+        errorMessage=""
+        forwardedRef={[Function]}
+        label="Valor"
+        onBlur={null}
+        onChange={null}
+        onControlClick={null}
+        onInput={null}
+        placeholder={null}
+        step={10}
+        validation={null}
+      />
+      <Toggle
+        checked={false}
+        className="field-full"
+        disabled={false}
+        forwardedRef={[Function]}
+        label="Crédito"
+        onChange={[Function]}
+        secondaryLabel="Débito"
+        title="Crédito ou Débito?"
+      />
+      <Button
+        className="registerButton-0-2-1"
+        color="mars"
+        disabled={false}
+        title="Cadastrar nova transação"
+        type="submit"
+      >
+        Cadastrar
+      </Button>
+    </form>
+  </main>
+</Content>
+`;

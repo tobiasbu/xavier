@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
+    "checkJs": true,
     "target": "es2015",
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "jsx": "react",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@vendor/*": ["./vendor/*"],
       "@utils/*": ["./src/utils/*"],
-      "@API": ["./src/API/index.js"]
+      "@utils": ["./src/utils"],
+      "@API": ["./src/API"]
     }
   },
   "exclude": ["node_modules", "dist"],

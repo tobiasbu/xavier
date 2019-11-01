@@ -1,19 +1,22 @@
 
 /**
- * Transaction descriptor
- */
-declare interface Transaction {
-  value: number;
-  description: string;
-  debit: boolean;
-  hash: string;
-  date: string;
-}
-
-/**
  * Xavier API
  */
 declare namespace API {
+
+
+  /**
+   * Transaction descriptor
+   */
+  declare interface Transaction {
+    value: number;
+    description: string;
+    debit: boolean;
+    hash: string | number;
+    timestamp: number;
+  }
+
+
   /**
    * Load transactions from database.
    */

@@ -2,7 +2,7 @@
 /**
  * Astro colors
  */
-type ButtonColor = 'uranus' | 'venus' | 'moon' | 'neptune' | 'mars';
+type ButtonColor = 'uranus' | 'venus' | 'moon' | 'neptune' | 'mars' | 'earth';
 
 /**
  * Describe button properties
@@ -28,4 +28,6 @@ export interface ButtonProps {
    * Button title.
    */
   title: string;
+
+  disabled: boolean;
 }

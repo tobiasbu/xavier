@@ -21,7 +21,7 @@ import useStyle from './style';
  */
 const Input = (props) => {
   const {
-    label, value, disabled, required, validation, placeholder, forwardedRef,
+    label, defaultValue, disabled, required, validation, placeholder, forwardedRef,
     errorMessage, onInput, onChange,
   } = props;
 
@@ -46,7 +46,7 @@ const Input = (props) => {
     <div className={`a-input${disabledClass}${validationClass} ${classes.inputContainer}`}>
       <input
         type="text"
-        defaultValue={value}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         disabled={disabled}
         onInput={onInput}
@@ -81,7 +81,7 @@ const Input = (props) => {
  */
 Input.defaultProps = {
   label: 'Standard',
-  value: '',
+  defaultValue: '',
   disabled: false,
   required: false,
   validation: null,
@@ -97,7 +97,7 @@ Input.defaultProps = {
  */
 Input.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.string,
+  defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
   validation: PropTypes.bool,

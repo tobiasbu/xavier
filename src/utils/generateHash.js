@@ -7,15 +7,19 @@ import { capitalize } from './stringUtils';
  *
  * Currently `react-jss` is not supporting custom class name generator (bug?)
  * Update: Fixed...
- * @param {any} rule Class name
- * @param {suffix} sheet Stylesheet
+ * @param {any} key Class name
+ * @param {string} suffix suffix
  */
 export function generateHash(key, suffix = '', withTime = false, toHex = true) {
   const time = (withTime) ? Date.now() : '';
-  const hash = `${suffix}${hashFunc(`${key}${JSON.stringify(key)}${time}`)}`;
+  /**
+   * @type {string | number}
+   */
+  let mur = hashFunc(`${key}${JSON.stringify(key)}${time}`);
   if (toHex) {
-    return hash.toString(16);
+    mur = mur.toString(16);
   }
+  const hash = `${suffix}${mur}`;
   return hash;
 }
 
@@ -26,6 +30,6 @@ export function generateHash(key, suffix = '', withTime = false, toHex = true) {
  * @param {any} _sheet StyleSheet
  */
 // eslint-disable-next-line no-unused-vars
-export function generateId(rule, _sheet) {
-  return `_x_${capitalize(rule.key.substr(0, 4))}__${generateHash(`${rule.key}`, undefined, true)}`;
+export function generateId(rule, _sheet, seed) {
+  return `_x_${capitalize(rule.key.substr(0, 4))}__${generateHash(rule.key, undefined, true)}`;
 }

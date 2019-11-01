@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * Astro headings.
- * @param {TitleProps} props Properties
+ * @param {any} props Properties
  */
 const Title = (props) => {
   const { size, children, className } = props;
@@ -22,15 +22,15 @@ const Title = (props) => {
     return (<h4 className={`a-title--small  ${className}`}>{children}</h4>);
   }
   if (size === 5) {
-    return (<h5 className={`a-text--large  ${className}`}>{children}</h5>);
+    return (<p className={`a-text--large  ${className}`}>{children}</p>);
   }
   if (size === 6) {
-    return (<h6 className={`a-text--medium  ${className}`}>{children}</h6>);
+    return (<p className={`a-text--medium  ${className}`}>{children}</p>);
   }
   if (size === 6) {
-    return (<h7 className={`a-text--small  ${className}`}>{children}</h7>);
+    return (<p className={`a-text--small  ${className}`}>{children}</p>);
   }
-  return (<h8 className={`a-text--small  ${className}`}>{children}</h8>);
+  return (<p className={`a-text--small  ${className}`}>{children}</p>);
 };
 
 /**

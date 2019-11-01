@@ -7,9 +7,9 @@ import { isValid } from './valueEvaluation';
  * Capitalize the first letter of given string.
  * @param {string} str The string to be capitalized.
  */
-export function capitalize(s) {
-  if (typeof s !== 'string') return '';
-  return s.charAt(0).toUpperCase() + s.slice(1);
+export function capitalize(str) {
+  if (typeof str !== 'string') return '';
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 /**
@@ -43,9 +43,12 @@ export function getRoute(url) {
  * @param {string | number} str The value.
  */
 export function getCurrency(str) {
-  let convert = str;
+  let convert;
   if (typeof str === 'number') {
     convert = str.toString(10);
+  } else {
+    // ts checks again...
+    convert = str;
   }
   const match = /([0-9.]*)(?:,(\d*))?$/i.exec(convert);
   if (!isValid(match)) {
@@ -69,6 +72,9 @@ export function splitCurrency(str) {
   let convert = str;
   if (typeof str === 'number') {
     convert = str.toString(10);
+  } else {
+    // ts checks again...
+    convert = str;
   }
   const match = /([0-9.]*)(?:,(\d*))?$/i.exec(convert);
   if (!isValid(match)) {
@@ -79,11 +85,13 @@ export function splitCurrency(str) {
   }
   let numerator = match[1].replace('.', '') || '0';
   if (numerator) {
+    // @ts-ignore
     numerator = parseInt(numerator, 10);
   }
 
   let denominator = match[2] || '0';
   if (denominator) {
+    // @ts-ignore
     denominator = parseInt(denominator, 10);
   }
   return {

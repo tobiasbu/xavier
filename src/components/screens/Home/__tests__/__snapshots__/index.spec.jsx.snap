@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home screen should render 1`] = `
+<Content>
+  <Header>
+    Seja bem vindo!
+  </Header>
+  <Text
+    className=""
+    size={1}
+  >
+    <span
+      aria-label="high voltage"
+      role="img"
+    >
+      ⚡
+    </span>
+    <strong>
+       xavier 
+    </strong>
+    é muito mais do que um programa de gestão financeira.
+  </Text>
+  <Text
+    className=""
+    size={1}
+  >
+    <span
+      aria-label="high voltage"
+      role="img"
+    >
+      ⚡
+    </span>
+    <strong>
+       xavier 
+    </strong>
+    fornece um espaço para seus usuários com soluções ágeis e fáceis, para qualquer tipo de necessidade.
+  </Text>
+  <Text
+    className=""
+    size={1}
+  >
+    Comece agora já a usar a melhor plataforma de gestão financeira, gratuitamente!
+  </Text>
+</Content>
+`;

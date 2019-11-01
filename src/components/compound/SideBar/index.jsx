@@ -33,8 +33,8 @@ const mapOption = (route, index, selected, onSelect) => (
  * But here I'm testing the JSS style `attach` and  `detach` functions.
  */
 class SideBar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     // useState can solve that.
     this.state = {
       open: false,

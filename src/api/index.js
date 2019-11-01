@@ -1,5 +1,8 @@
 import * as Utils from '@utils';
 
+/**
+ * @typedef { import("./index").Transaction } Transaction
+ */
 
 /**
 * @type {Transaction[]}
@@ -33,6 +36,10 @@ export function loadTransactions() {
   return transactions;
 }
 
+/**
+ * Save transactions to database;
+ * @param {Transaction[]} transList Transaction list.
+ */
 export function saveTransactions(transList = undefined) {
   let list = transList;
   if (!list) {
@@ -46,7 +53,7 @@ export function saveTransactions(transList = undefined) {
 
 /**
  * Add a transaction to database
- * @param {string} value Value
+ * @param {string | number} value Value
  * @param {string} description Description
  * @param {boolean} debit Debit card?
  */
@@ -54,8 +61,20 @@ export function addTransaction(value, description, debit) {
   if (!loaded) {
     loadTransactions();
   }
+
+  let val;
+  if (typeof value === 'string') {
+    val = Utils.str.currencyToFloat(value);
+  } else {
+    // Ts checks is a bit annoying...
+    val = value;
+  }
+
+  /**
+   * @type {Transaction}
+   */
   const t = {
-    value: Utils.str.currencyToFloat(value),
+    value: val,
     description,
     hash: Math.random(),
     timestamp: Date.now(),
@@ -65,6 +84,7 @@ export function addTransaction(value, description, debit) {
   t.hash = hash;
   transactions = [...transactions, t];
   localStorage.setItem('transactions', JSON.stringify(transactions));
+  return t;
 }
 
 /**
@@ -140,6 +160,27 @@ export function getTransactions() {
   if (!loaded) {
     return loadTransactions();
   }
-
   return transactions;
+}
+
+/**
+ * Clear transactions list.
+ * @param {boolean} overwrite Overwrite database?
+ */
+export function clear(overwrite = true) {
+  loaded = false;
+  transactions = [];
+  if (overwrite) {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  }
+}
+
+/**
+ * Get total of transactions.
+ */
+export function count() {
+  if (!loaded) {
+    return 0;
+  }
+  return transactions.length;
 }
