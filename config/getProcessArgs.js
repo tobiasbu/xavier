@@ -1,4 +1,4 @@
-import ip from 'ip';
+import getIP from './getIP';
 
 export default function getProcessArgs(argv) {
   let HOST = 'localhost';
@@ -13,7 +13,7 @@ export default function getProcessArgs(argv) {
           break;
         case '--HOST': {
           if ('local') {
-            HOST = ip.address();
+            HOST = getIP();
             IS_LOCAL_NET = true;
           } else {
             HOST = splitedArg[1];

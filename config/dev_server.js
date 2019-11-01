@@ -45,7 +45,9 @@ async function main() {
 
   // Get our configuration
   const config = webpackConfigFn({
-    mode: ARGS.PRODUCTION ? 'production' : 'development',
+    env: {
+      PROD: ARGS.PRODUCTION,
+    }
   });
 
   // Webpack compiler
@@ -93,7 +95,7 @@ async function main() {
 
     // Will run in local network
     if (ARGS.IS_LOCAL_NET) {
-      app.use(cors({
+      expressApp.use(cors({
         origin: '*',
         optionsSuccessStatus: 200
       }));

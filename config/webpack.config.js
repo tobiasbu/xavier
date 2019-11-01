@@ -3,6 +3,7 @@ import path from 'path';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 import getCssLoader from './getCssLoader';
 
@@ -16,7 +17,7 @@ import getCssLoader from './getCssLoader';
 export default function (env) {
 
   // Declare config constants
-  const MODE = (env.prod) ? 'production' : 'development';
+  const MODE = (env.PROD) ? 'production' : 'development';
   const isProduction = (MODE !== 'development');
 
   // Paths constants
@@ -36,7 +37,7 @@ export default function (env) {
    */
   const config = {
     context: ROOT_PATH,
-    target: 'web',
+    // target: 'web',
     devtool: 'source-map',
     mode: MODE,
     entry: {
@@ -44,11 +45,10 @@ export default function (env) {
     },
     output: {
       path: OUTPUT_PATH,
-      filename: '[name].js',
+      filename: '[name].bundle.js',
       hotUpdateChunkFilename: ".hot/[id].[hash].hot-update.js",
       hotUpdateMainFilename: ".hot/[hash].hot-update.json",
       pathinfo: isProduction === false,
-
     },
     resolve: {
       extensions: [".js", ".jsx", ".json"],
@@ -137,14 +137,14 @@ export default function (env) {
     // Optimize
     config.optimization.minimize = true;
     config.optimization.minimizer = [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true,
-        uglifyOptions: {
-          compress: true,
+        terserOptions: {
           ecma: 5,
           safari10: true,
         },
+        exclude: /node_modules/,
       })
     ];
     // Minify CSS

@@ -9,16 +9,16 @@ const useStyle = createUseStyles({
     maxWidth: '48rem',
     [MediaQueries.large]: {
       maxWidth: '48rem',
-      margin: '0 auto',
+      margin: '0 auto 6rem',
     },
     [MediaQueries.medium]: {
       maxWidth: '32rem',
-      margin: '0 auto',
+      margin: '0 auto 6rem',
     },
     [MediaQueries.small]: {
       maxWidth: '100%',
       width: '100%',
-      padding: '0 1rem',
+      padding: '0 1rem 6rem',
     },
   },
 });

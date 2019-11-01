@@ -6,8 +6,9 @@
   "scripts": {
     "start": "npm run clean && node -r esm ./config/dev_server.js",
     "start-local": "npm run clean && node -r esm ./config/dev_server.js --HOST=local",
-    "clean": "rm -fr dist",
-    "build": "npm run clean && webpack --config ./config/webpack.config.js --env.PROD",
+    "preview": "node -r esm ./config/preview_server.js --HOST=local",
+    "clean": "rm -fr dist build",
+    "build": "npm run clean && babel-node ./node_modules/webpack/bin/webpack --config ./config/webpack.config.js --env.PROD",
     "test": "jest --verbose",
     "test-renew": "jest --verbose -u",
     "lint": "eslint src --ext .js,.jsx"
@@ -48,12 +49,15 @@
     "text-mask-core": "^5.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@moebius/http-graceful-shutdown": "^1.1.0",
     "@testing-library/react": "^9.3.0",
     "@types/jest": "^24.0.21",
     "babel-loader": "^8.0.6",
+    "babel-node": "0.0.1-security",
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
@@ -74,7 +78,6 @@
     "express": "^4.17.1",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
-    "ip": "^1.1.5",
     "jest": "^24.9.0",
     "jest-svg-transformer": "^1.0.0",
     "mini-css-extract-plugin": "^0.8.0",
@@ -84,7 +87,10 @@
     "string-similarity": "^3.0.0",
     "style-loader": "^1.0.0",
     "svg-url-loader": "^3.0.2",
+    "terser-webpack-plugin": "^2.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
   },
