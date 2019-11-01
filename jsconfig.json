@@ -11,7 +11,7 @@
       "@vendor/*": ["./vendor/*"],
       "@utils/*": ["./src/utils/*"],
       "@utils": ["./src/utils"],
-      "@API": ["./src/API"]
+      "@API": ["./src/api"]
     }
   },
   "exclude": ["node_modules", "dist"],

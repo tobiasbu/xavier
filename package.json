@@ -107,7 +107,7 @@
       "shared"
     ],
     "moduleNameMapper": {
-      "^@API(.*)$": "<rootDir>/src/API$1"
+      "^@API(.*)$": "<rootDir>/src/api$1"
     }
   }
 }

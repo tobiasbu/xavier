@@ -32,7 +32,7 @@
         "map": [
           ["@vendor","./vendor"],
           ["@utils","./src/utils"],
-          ["@API","./src/API"]
+          ["@API","./src/api"]
         ],
         "extensions": [
           ".js",

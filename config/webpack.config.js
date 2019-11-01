@@ -55,7 +55,7 @@ export default function (env) {
       alias: {
         "@vendor": path.resolve(ROOT_PATH, "vendor"),
         "@utils": path.resolve(ROOT_PATH, "src/utils"),
-        "@API": path.resolve(ROOT_PATH, "src/API/index.js"),
+        "@API": path.resolve(ROOT_PATH, "src/api/index.js"),
       }
     },
     module: {
