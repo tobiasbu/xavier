@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 
 import useCallbackRef from '@utils/useCallbackRef';
 import * as Utils from '@utils';
@@ -36,8 +37,6 @@ const NumberInput = (props) => {
   // Class names
   const disabledClass = (disabled) ? ' a-input--disabled' : '';
   const validationClass = commons.getValidationClass(validation);
-  const inputId = Utils.generateHash(props, 'm-i-');
-  const labelId = Utils.generateHash(props, 'm-l-');
 
   // Events
   const onCtrlClick = (e, sign, focus = true) => {
@@ -86,6 +85,10 @@ const NumberInput = (props) => {
       onChange(e, elementValue);
     }
   };
+
+  const slug = slugify(label, { lower: true }) || '_x_';
+  const labelId = `${slug}-n-label` || 'label';
+  const inputId = `${slug}-n-input` || 'input';
 
   return (
     <div className={`a-input a-input--control${disabledClass}${validationClass} ${classes.inputContainer}`}>

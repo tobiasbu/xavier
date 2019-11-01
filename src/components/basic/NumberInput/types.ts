@@ -17,10 +17,6 @@ export interface NumberInputProps extends InputProps {
    * @return The new value.
    */
   onControlClick?: (current: React.ReactText, step: number) => React.ReactText;
-  /**
-   * Function to conform value.
-   */
-  conform?: (current: React.ReactText, inputValue: string) => React.ReactText;
 };
 
 /**

@@ -5,16 +5,16 @@ exports[`Toogle should render Toogle 1`] = `
   className="a-toggle mars-neptune "
 >
   <label
-    htmlFor="m-i-a6ba504"
-    id="m-l-a6ba504"
+    htmlFor="voce-quer-ir-ao-cinema-t-input"
+    id="voce-quer-ir-ao-cinema-t-label"
   >
     Você quer ir ao cinema?
   </label>
   <input
     aria-checked={true}
-    aria-labelledby="m-l-a6ba504"
+    aria-labelledby="voce-quer-ir-ao-cinema-t-label"
     checked={true}
-    id="m-i-a6ba504"
+    id="voce-quer-ir-ao-cinema-t-input"
     name="voce-quer-ir-ao-cinema"
     onChange={[Function]}
     title="Marcar um cinema com os amigos?"

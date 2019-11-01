@@ -7,7 +7,8 @@
     "start": "npm run clean && node -r esm ./config/dev_server.js --host=local-net",
     "clean": "rm -fr dist",
     "test": "jest --verbose",
-    "test-renew": "jest --verbose -u"
+    "test-renew": "jest --verbose -u",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

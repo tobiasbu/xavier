@@ -19,4 +19,10 @@ export interface ToggleProps {
    * On toggle state change.
    */
   onChange: (checked: boolean) => void,
+
+  secondaryLabel: string;
+  className: string;
+  forwardedRef: (instance: HTMLInputElement) => void,
+  title: string;
+
 }

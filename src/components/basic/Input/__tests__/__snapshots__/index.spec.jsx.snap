@@ -5,11 +5,11 @@ exports[`Input should render 1`] = `
   className="a-input inputContainer-0-2-1"
 >
   <input
-    aria-labelledby="m-l-26d0044a"
+    aria-labelledby="descricao-label"
     aria-required="false"
     defaultValue=""
     disabled={false}
-    id="m-i-26d0044a"
+    id="descricao-input"
     name="descricao"
     onChange={null}
     onInput={null}
@@ -20,8 +20,8 @@ exports[`Input should render 1`] = `
   />
   <label
     className=""
-    htmlFor="m-i-26d0044a"
-    id="m-l-26d0044a"
+    htmlFor="descricao-input"
+    id="descricao-label"
   >
     Descrição
   </label>

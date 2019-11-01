@@ -3,7 +3,7 @@ import * as Utils from '@utils';
 /**
  * Helper function to get Astro `<input>` validation class.
  *
- * @param {bool | undefined} validation Value
+ * @param {boolean | undefined} validation Value
  */
 export function getValidationClass(validation) {
   if (validation === true) {
@@ -19,8 +19,8 @@ export function getValidationClass(validation) {
  * For `<input>` labels, should float at top?
  * Specific Astro behavior.
  *
- * @param {InputProps} props Input properties
- * @param {string} inputValue Current input value
+ * @param {import('./Input/types').InputProps} props Input properties
+ * @param {string | number} inputValue Current input value
  */
 export function shouldLabelFloat(props, inputValue) {
   const {

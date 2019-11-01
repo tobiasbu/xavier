@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import slugify from 'slugify';
 
 import useCallbackRef from '@utils/useCallbackRef';
-import * as Utils from '@utils';
 import * as commons from '../inputCommons';
 
 import useStyle from './style';
@@ -26,13 +25,10 @@ const Input = (props) => {
   } = props;
 
   const classes = useStyle();
-  const [isLabelFloating, setLabelFloat] = useState(commons.shouldLabelFloat(props));
+  const [isLabelFloating, setLabelFloat] = useState(commons.shouldLabelFloat(props, defaultValue));
   const [elementRef, setRef] = useCallbackRef();
   const disabledClass = (disabled) ? ' a-input--disabled' : '';
   const validationClass = commons.getValidationClass(validation);
-
-  const inputId = Utils.generateHash(props, 'm-i-');
-  const labelId = Utils.generateHash(props, 'm-l-');
 
   const onKeyUp = () => {
     const r = commons.shouldLabelFloat(props, elementRef);
@@ -41,6 +37,10 @@ const Input = (props) => {
     }
     setLabelFloat(r);
   };
+
+  const slug = slugify(label, { lower: true }) || '_x_';
+  const labelId = `${slug}-label` || 'label';
+  const inputId = `${slug}-input` || 'input';
 
   return (
     <div className={`a-input${disabledClass}${validationClass} ${classes.inputContainer}`}>
@@ -67,7 +67,7 @@ const Input = (props) => {
       <label
         className={isLabelFloating ? 'a-input__label--floating' : ''}
         id={labelId}
-        htmlFor={inputId}
+        htmlFor={`${slugify(label, { lower: true })}-input`}
       >
         {label}
       </label>

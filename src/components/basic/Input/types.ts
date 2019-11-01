@@ -36,7 +36,7 @@ export interface InputProps {
   /**
    * Reference of the real input DOM element.
    */
-  forwardedRef?: React.Ref<HTMLInputElement>;
+  forwardedRef?: (el : HTMLInputElement) => void;
   /**
    * On input.
    */
@@ -45,4 +45,10 @@ export interface InputProps {
    * On change.
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+
+  required?: boolean;
+
+  defaultValue?: React.ReactText;
+
+  errorMessage?: React.ReactText;
 };

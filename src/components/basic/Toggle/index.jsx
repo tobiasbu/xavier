@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
 
-import * as Utils from '@utils';
-
 import useStyle from './style';
 
 /**
@@ -22,8 +20,6 @@ const Toggle = (props) => {
   const [isChecked, setChecked] = useState(checked);
   const classes = useStyle();
 
-  const inputId = Utils.generateHash(props, 'm-i-');
-  const labelId = Utils.generateHash(props, 'm-l-');
   const disableClass = (disabled === true) ? ' a-toggle--disabled ' : '';
 
   const onChangeWrap = () => {
@@ -38,6 +34,10 @@ const Toggle = (props) => {
   if (secondaryLabel) {
     name = `${name}-${(secondaryLabel || '')}`;
   }
+
+  const slug = slugify(label, { lower: true }) || '_x_';
+  const labelId = `${slug}-t-label` || 'label';
+  const inputId = `${slug}-t-input` || 'input';
 
   return (
     <div className={`a-toggle mars-neptune ${disableClass}${className}`}>
