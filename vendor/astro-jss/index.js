@@ -220,8 +220,8 @@ export default {
       maskImage: 'url(assets/icons/mail.svg)',
     },
     '.a-icon--menu': {
-      WebkitMaskImage: 'url(assets/icons/menu.svg)',
-      maskImage: 'url(assets/icons/menu.svg)',
+      WebkitMaskImage: `url(${ICONS.menu})`,
+      maskImage: `url(${ICONS.menu})`,
     },
     '.a-icon--phone': {
       WebkitMaskImage: 'url(assets/icons/phone.svg)',
@@ -444,8 +444,8 @@ export default {
       maskImage: 'url(assets/icons/heart.svg)',
     },
     '.a-icon--close': {
-      WebkitMaskImage: 'url(assets/icons/close.svg)',
-      maskImage: 'url(assets/icons/close.svg)',
+      WebkitMaskImage: `url(${ICONS.close})`,
+      maskImage: `url(${ICONS.close})`,
     },
     '.a-icon--mountain': {
       WebkitMaskImage: 'url(assets/icons/mountain.svg)',

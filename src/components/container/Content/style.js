@@ -18,7 +18,7 @@ const useStyle = createUseStyles({
     [MediaQueries.small]: {
       maxWidth: '100%',
       width: '100%',
-      padding: '0 2rem',
+      padding: '0 1rem',
     },
   },
 });

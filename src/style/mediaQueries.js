@@ -4,8 +4,9 @@
  */
 const MediaQueries = {
   large: '@media (max-width: 1024px)',
-  medium: '@media (max-width: 832px)',
-  small: '@media (max-width: 576px)',
+  largeUp: '@media (min-width: 1024px)',
+  medium: '@media (max-width: 918px)',
+  small: '@media (max-width: 632px)',
 };
 
 export default MediaQueries;

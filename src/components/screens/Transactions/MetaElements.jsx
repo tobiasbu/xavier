@@ -14,7 +14,7 @@ const Balance = (props) => {
   return (
     <Text size={1} className={classes.fancyBalance}>
       {
-        ['Saldo: ',
+        ['Saldo total: ',
           <strong key="totalValue">{totalCurrency}</strong>]
       }
     </Text>

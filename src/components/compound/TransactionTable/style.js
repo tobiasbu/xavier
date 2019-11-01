@@ -1,17 +1,18 @@
 import { createUseStyles } from 'react-jss';
 
 import { capitalize } from '@utils/stringUtils';
+import MediaQueries from '../../../style/mediaQueries';
 
 export default createUseStyles({
   tableMain: {
     width: '100%',
     border: 'none',
-    borderSpacing: 2,
+    borderSpacing: '1px',
     borderCollapse: 'collapse',
   },
   tableHead: {
     border: 'none',
-    borderSpacing: 2,
+    borderSpacing: '1px',
     borderCollapse: 'collapse',
     borderBottom: '1px solid var(--color-space-300)',
     borderTop: '1px solid var(--color-space-300)',
@@ -30,20 +31,33 @@ export default createUseStyles({
     fontFamily: 'Lato, sans-serif',
     borderBottom: '1px solid var(--color-space-300)',
     wordBreak: 'break-word',
+    [MediaQueries.small]: {
+      padding: '0.5rem',
+    },
   },
   cellDescription: {
     width: '25%',
+    [MediaQueries.small]: {
+      width: 'auto',
+    },
   },
   cellValue: {
     width: '25%',
+    [MediaQueries.small]: {
+      width: 'auto',
+    },
   },
   cellRemover: {
-    maxWidth: '80px',
+    maxWidth: '48px',
     width: '10%',
   },
   cellDebit: {
     minWidth: '90px',
     width: '15%',
+    [MediaQueries.small]: {
+      minWidth: 'unset',
+      width: 'auto',
+    },
   },
 });
 

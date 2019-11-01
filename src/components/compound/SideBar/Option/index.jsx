@@ -11,7 +11,7 @@ import useStyle from './style';
  */
 const Option = (props) => {
   const {
-    children, selected, link,
+    children, selected, link, onSelect,
   } = props;
 
   const classes = useStyle();
@@ -24,6 +24,7 @@ const Option = (props) => {
       className={`${classes.optionWrapper} ${selectedClass}`}
       aria-label={`${children}`}
       aria-current={ariaCurrent}
+      onClick={onSelect}
     >
       {children}
     </NavLink>
@@ -36,6 +37,7 @@ const Option = (props) => {
 Option.defaultProps = {
   link: '/',
   selected: false,
+  onSelect: null,
 };
 
 /**
@@ -45,6 +47,7 @@ Option.propTypes = {
   link: PropTypes.string,
   selected: PropTypes.bool,
   children: PropTypes.string.isRequired,
+  onSelect: PropTypes.func,
 };
 
 
