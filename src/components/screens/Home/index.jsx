@@ -40,7 +40,7 @@ const Home = () => {
             <Text size={1}>
               <span role="img" aria-label="high voltage">⚡</span>
               <strong> xavier </strong>
-              é muito mais do que um programa de gestão de financeira.
+              é muito mais do que um programa de gestão financeira.
             </Text>
             <Text size={1}>
               <span role="img" aria-label="high voltage">⚡</span>
@@ -49,7 +49,7 @@ const Home = () => {
               para qualquer tipo de necessidade.
             </Text>
             <Text size={1}>
-              Comece agora já, a usar a melhor plataforma de gestão financeira gratuitamente!
+              Comece agora já a usar a melhor plataforma de gestão financeira, gratuitamente!
             </Text>
           </>
         )}
