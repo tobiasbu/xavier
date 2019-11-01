@@ -6,11 +6,26 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 const numberMask = createNumberMask({
   prefix: 'R$ ',
   decimalSymbol: ',',
-  requireDecimal: true,
+  requireDecimal: false,
   allowDecimal: true,
+  includeThousandsSeparator: false,
   thousandsSeparatorSymbol: '.',
   decimalLimit: 2,
   integerLimit: 10,
 });
 
-export default numberMask;
+const numberMaskWithThousands = createNumberMask({
+  prefix: 'R$ ',
+  decimalSymbol: ',',
+  requireDecimal: false,
+  allowDecimal: true,
+  includeThousandsSeparator: true,
+  thousandsSeparatorSymbol: '.',
+  decimalLimit: 2,
+  integerLimit: 10,
+});
+
+export {
+  numberMask,
+  numberMaskWithThousands,
+};

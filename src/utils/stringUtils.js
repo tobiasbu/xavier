@@ -1,5 +1,5 @@
 import { conformToMask } from 'text-mask-core';
-import numberMask from '../components/commons';
+import { numberMaskWithThousands, numberMask } from '../components/commons';
 
 import { isValid } from './valueEvaluation';
 
@@ -117,8 +117,9 @@ export function currencyToFloat(str) {
 /**
  * Convert string or number to valid currency (R$ only)
  * @param {string | number} value Value to convert
+ * @param {boolean} thousands Include thousands symbol?
  */
-export function toCurrency(value) {
+export function toCurrency(value, thousands = true) {
   const type = typeof value;
   let str = value;
   let numer = str;
@@ -138,6 +139,12 @@ export function toCurrency(value) {
     denom = `${denom}0`;
   }
 
-  const r = conformToMask(`R$ ${numer},${denom}`, numberMask);
+  let r;
+  if (thousands) {
+    r = conformToMask(`R$ ${numer},${denom}`, numberMaskWithThousands);
+  } else {
+    r = conformToMask(`R$ ${numer},${denom}`, numberMask);
+  }
+
   return r.conformedValue;
 }

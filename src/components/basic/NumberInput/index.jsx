@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import useCallbackRef from '@utils/useCallbackRef';
@@ -25,21 +25,13 @@ const NumberInput = (props) => {
   const {
     label, disabled, validation, placeholder, forwardedRef,
     onInput, onChange, onControlClick, onBlur,
-    step, value, conform, errorMessage, autocomplete,
+    step, defaultValue, errorMessage,
   } = props;
 
   // Hooks
   const classes = useStyle();
-  const [isLabelFloating, setLabelFloat] = useState(commons.shouldLabelFloat(props, value));
-  const [inputValue, setValue] = useState({ raw: value, conformed: value });
+  const [isLabelFloating, setLabelFloat] = useState(commons.shouldLabelFloat(props, defaultValue));
   const [elementRef, setRef] = useCallbackRef();
-  // Make sure to conform first time!
-  useEffect(() => {
-    if (conform) {
-      const r = conform(value);
-      setValue(r);
-    }
-  }, [value]);
 
   // Class names
   const disabledClass = (disabled) ? ' a-input--disabled' : '';
@@ -47,75 +39,59 @@ const NumberInput = (props) => {
   const inputId = Utils.generateHash(props, 'm-i-');
   const labelId = Utils.generateHash(props, 'm-l-');
 
-
   // Events
   const onCtrlClick = (e, sign, focus = true) => {
-    let conformedValue;
-    let newVal;
-    if (onControlClick) {
-      newVal = onControlClick(inputValue, step * sign);
-    } else {
-      if (typeof conformedValue === 'string') {
-        conformedValue = parseInt(inputValue, 10);
+    if (Utils.isValid(elementRef)) {
+      const { value } = elementRef;
+      let newVal;
+      if (onControlClick) {
+        newVal = onControlClick(value, step * sign);
+      } else {
+        if (typeof value === 'string') {
+          newVal = parseInt(value, 10);
+        }
+        if (Number.isNaN(value)) {
+          newVal = 0;
+        }
+        newVal = value + step * sign;
       }
-      if (Number.isNaN(conformedValue)) {
-        conformedValue = 0;
-      }
-      newVal = {
-        raw: inputValue.raw + step * sign,
-        conformed: inputValue.raw,
-      };
-    }
-
-    if (Utils.isValid(elementRef) && focus) {
-      elementRef.focus();
-      elementRef.value = newVal.conformed;
-      if (Utils.isValid(onChange)) {
-        onChange(elementRef, newVal);
+      elementRef.value = newVal;
+      if (focus) {
+        elementRef.focus();
+        if (Utils.isValid(onChange)) {
+          onChange(elementRef, newVal);
+        }
       }
     }
-    setValue(newVal);
   };
 
   const onKeyUp = () => {
+    let elementValue;
     if (Utils.isValid(elementRef)) {
       elementRef.focus();
+      elementValue = elementRef.value;
     }
-    const r = commons.shouldLabelFloat(props, inputValue);
+    const r = commons.shouldLabelFloat(props, elementValue);
     if (r !== isLabelFloating) {
       setLabelFloat(r);
     }
   };
 
-  const onKeyPress = (e) => {
-    if (e.keyCode === 38) { // up
-      onCtrlClick(1, false);
-    } else if (e.keyCode === 40) { // down
-      onCtrlClick(-1, false);
-    }
-  };
-
   const onChangeWrap = (e) => {
-    let val;
-    if (Utils.isValid(conform)) {
-      val = conform(e.target.value);
-    } else {
-      val = {
-        conformed: e.target.value,
-        raw: inputValue.raw,
-      };
+    let elementValue = 0;
+    if (Utils.isValid(elementRef)) {
+      elementValue = elementRef.value;
     }
     if (Utils.isValid(onChange)) {
-      onChange(e, val);
+      onChange(e, elementValue);
     }
-    setValue(val);
   };
 
   return (
     <div className={`a-input a-input--control${disabledClass}${validationClass} ${classes.inputContainer}`}>
       <input
         type="text"
-        value={inputValue.conformed}
+        defaultValue={defaultValue}
         aria-labelledby={labelId}
         disabled={disabled}
         placeholder={placeholder}
@@ -128,11 +104,9 @@ const NumberInput = (props) => {
         onInput={onInput}
         onChange={onChangeWrap}
         onKeyUp={onKeyUp}
-        onKeyDown={onKeyPress}
         onBlur={onBlur}
         id={inputId}
         name={label.toLowerCase()}
-        autoComplete={autocomplete}
       />
       <label className={isLabelFloating ? 'a-input__label--floating' : ''} id={labelId} htmlFor={inputId}>
         {label}
@@ -149,7 +123,7 @@ const NumberInput = (props) => {
  */
 NumberInput.defaultProps = {
   label: 'Number Input',
-  value: 0,
+  defaultValue: '',
   step: 10,
   disabled: false,
   validation: null,
@@ -160,8 +134,6 @@ NumberInput.defaultProps = {
   onChange: null,
   onControlClick: null,
   onBlur: null,
-  conform: null,
-  autocomplete: 'on',
 };
 
 /**
@@ -169,7 +141,7 @@ NumberInput.defaultProps = {
  */
 NumberInput.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.oneOfType([
+  defaultValue: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
@@ -186,8 +158,6 @@ NumberInput.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) }),
   ]),
-  conform: PropTypes.func,
-  autocomplete: PropTypes.oneOf(['on', 'off']),
 };
 
 export default NumberInput;

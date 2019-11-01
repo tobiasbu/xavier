@@ -24,7 +24,6 @@ const CreateTransaction = () => {
     register, handleSubmit, errors, formState,
   } = useForm();
   const classes = useStyle();
-  const [value, setValue] = useState(0);
   const [isDebit, setDebit] = useState(false);
 
   // On form submit
@@ -32,7 +31,6 @@ const CreateTransaction = () => {
     e.preventDefault();
     addTransaction(data.valor, data.descricao, data['credito-debito']);
     e.target.reset();
-    setValue(0);
   };
 
   const descError = validation.checkError(errors.descricao, 'Por favor, insira uma descrição para sua transação.');
@@ -66,10 +64,8 @@ const CreateTransaction = () => {
                 validate: validation.validateCurrency,
               })
             }
-            value={value}
             validation={currencyError.valid}
             errorMessage={currencyError.message}
-            onChange={(e, inputValue) => setValue(inputValue.conformed)}
           />
           <Toggle
             label="Crédito"

@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { InputProps } from '../Input/types';
 
-export interface NumberInputState {
-  raw: number,
-  conformed: string | number;
-}
-
 /**
  * Describe the input text properties.
  */
@@ -21,11 +16,11 @@ export interface NumberInputProps extends InputProps {
    * 
    * @return The new value.
    */
-  onControlClick?: (current: NumberInputState, step: number) => NumberInputState;
+  onControlClick?: (current: React.ReactText, step: number) => React.ReactText;
   /**
    * Function to conform value.
    */
-  conform?: (current: NumberInputState, inputValue: string) => NumberInputState;
+  conform?: (current: React.ReactText, inputValue: string) => React.ReactText;
 };
 
 /**
