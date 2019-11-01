@@ -14,6 +14,9 @@ export default function getProcessArgs(argv) {
         case '--HOST': {
           if ('local') {
             HOST = getIP();
+            if (!HOST) {
+              HOST = '0.0.0.0';
+            }
             IS_LOCAL_NET = true;
           } else {
             HOST = splitedArg[1];
