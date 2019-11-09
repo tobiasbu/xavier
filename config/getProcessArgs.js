@@ -8,11 +8,12 @@ export default function getProcessArgs(argv) {
   if (argv.length > 0) {
     argv.forEach(arg => {
       const splitedArg = arg.split('=');
+      const value = splitedArg[1];
       switch (splitedArg[0]) {
         default:
           break;
         case '--HOST': {
-          if ('local') {
+          if (value === 'local') {
             HOST = getIP();
             if (!HOST) {
               HOST = '0.0.0.0';

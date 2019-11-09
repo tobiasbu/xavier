@@ -82,10 +82,12 @@ class SideBar extends React.Component {
           <div className={`${classes.sidebarContent} ${open ? classes.openContent : ''}`}>
             <div className={`${classes.sidebarMainMenu} ${openMainMenu}`}>
               <Logo />
-              {routeMap.map((value, index) => {
-                const isSelected = location.pathname === value.link;
-                return mapOption(value, index, isSelected, this.onSelect);
-              })}
+              <nav className={classes.sidebarOptionsContainer}>
+                {routeMap.map((value, index) => {
+                  const isSelected = location.pathname === value.link;
+                  return mapOption(value, index, isSelected, this.onSelect);
+                })}
+              </nav>
             </div>
           </div>
         </div>

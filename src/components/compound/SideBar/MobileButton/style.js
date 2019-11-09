@@ -4,7 +4,7 @@ import MediaQueries from '../../../../style/mediaQueries';
 export default createUseStyles({
   mobileButton: {
     cursor: 'pointer',
-    position: 'absolute',
+    position: 'fixed',
     width: 42,
     height: 42,
     top: '0.75rem',

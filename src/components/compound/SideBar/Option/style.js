@@ -24,7 +24,6 @@ const useStyle = createUseStyles({
     color: 'var(--color-mars-500)',
     backgroundColor: 'var(--color-space-200)',
     '&:hover': {
-      // backgroundColor: 'var(--color-space-300)',
       color: 'var(--color-mars-500)',
     },
   },
