@@ -4,4 +4,5 @@ export interface OptionsProps {
   onSelect?: null;
   selected?: boolean;
   tabIndex?: number;
+  link: string;
 }

@@ -18,7 +18,7 @@ const style = jss.createStyleSheet({
     width: 300,
     minWidth: 300,
     height: '100%',
-    maxHeight: '100vh',
+    minHeight: '100vh',
     backgroundColor: 'white',
     borderRight: '1px solid var(--color-space-300)',
     transition: '0.15s ease transform',
@@ -28,16 +28,27 @@ const style = jss.createStyleSheet({
     },
     zIndex: 20,
   },
+  sidebarOptionsContainer: {
+    overflowY: 'auto',
+    flex: '1 1 0%',
+  },
   openContent: {
     transform: 'translateX(0%)',
   },
   sidebarMainMenu: {
+    display: 'flex !important',
+    flexDirection: 'column',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
     [MediaQueries.large]: {
       display: 'none',
     },
   },
   openMainMenu: {
-    display: 'block !important',
+    display: 'flex !important',
   },
   backgroundMenu: {
     backgroundColor: 'black',
@@ -46,7 +57,7 @@ const style = jss.createStyleSheet({
     left: 0,
     bottom: 0,
     right: 0,
-    position: 'absolute',
+    position: 'fixed',
     zIndex: 10,
     display: 'none',
     [MediaQueries.largeUp]: {
