@@ -7,7 +7,7 @@ import TransactionTable from '..';
 describe('TransactionTable', () => {
   it('should render', () => {
     /**
-     * @type {import('../../../../API').Transaction[]}
+     * @type {import('../../../../api').Transaction[]}
      */
     const transactions = [
       {
