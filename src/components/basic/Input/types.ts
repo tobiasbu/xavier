@@ -45,10 +45,16 @@ export interface InputProps {
    * On change.
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-
+  /**
+   * Is this input required for form validation?
+   */  
   required?: boolean;
-
+  /**
+   * Default value of this input.
+   */
   defaultValue?: React.ReactText;
-
+  /**
+   * Input error message.
+   */
   errorMessage?: React.ReactText;
 };

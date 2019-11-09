@@ -14,9 +14,11 @@ export interface ButtonIconProps {
    */
   title: string;
   /**
-   * Aria-lable
+   * Aria-label
    */
   ariaLabel: string;
-
+  /**
+   * On click event
+   */
   onClick: React.MouseEventHandler<HTMLElement>;
 }

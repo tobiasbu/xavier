@@ -26,7 +26,6 @@ export default function getProcessArgs(argv) {
         }
         case '--PREVIEW': {
           BUILD_PREVIEW = true;
-          console.log('### PREVIEW MODE ###')
           break;
         }
         case '--PROD': {

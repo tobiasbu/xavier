@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 /**
  * Astro text
- * @param {TextProps} props Text props
+ * @param {any} props Text props
  */
 const Text = (props) => {
   const { size, children, className } = props;
