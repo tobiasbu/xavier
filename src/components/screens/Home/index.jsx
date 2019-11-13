@@ -15,7 +15,7 @@ import useStyle from './style';
  */
 const Home = () => {
   const len = API.getTransactions().length;
-  const total = API.getTotalValue();
+  const { total } = API.getTotalValueByType();
   const classes = useStyle();
 
   return (
