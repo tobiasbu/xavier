@@ -43,7 +43,7 @@ const OperationInfo = (props) => {
           'Valor em operações no Crédito: \n',
           <strong key="totalCredit">{totalCredit}</strong>,
           <br key="really2" />,
-          'Valor em operações no Débito: ',
+          <p style={{ color: 'red' }}>Valor em operações no Débito: </p>, // TODO! Please use astro colors
           <strong key="totalDebit">{totalDebit}</strong>,
         ]
       }

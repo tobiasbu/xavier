@@ -116,6 +116,7 @@ export function removeTransaction(trans) {
 
 /**
  * Get total value of the transactions.
+ * @deprecated
  */
 export function getTotalValue() {
   if (!loaded) {
@@ -149,7 +150,7 @@ export function getTotalValueByType() {
   return {
     credit,
     debit,
-    total: credit + debit,
+    total: credit - debit,
   };
 }
 
@@ -161,6 +162,11 @@ export function getTransactions() {
     return loadTransactions();
   }
   return transactions;
+}
+
+export function getByFilter(filterName) {
+  const isDebit = filterName === 'debit';
+  return transactions.filter((transaction) => (transaction.debit === isDebit));
 }
 
 /**

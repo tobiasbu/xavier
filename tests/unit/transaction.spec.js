@@ -90,4 +90,14 @@ describe('Transaction API', () => {
     API.loadTransactions();
     expect(API.count()).to.equal(100);
   });
+
+  it('get transaction by type (debit)', () => {
+    makeRandomTransactions(100, (index) => (
+      {
+        debit: index % 2 === 0,
+      }
+    ));
+    const debitArr = API.getByFilter('debit');
+    expect(debitArr.length).to.equal(50);
+  });
 });
