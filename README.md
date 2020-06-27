@@ -1,8 +1,5 @@
-<p align="center" style="margin:16px">
-<img src="https://tobiasbu.github.io/img/xavier_logo.png"/>
-</p>
-<br>
-<p align="center" style="font-size: 1.2rem;"><strong>Xavier</strong> is a financial transaction manager. </p>
+# Xavier
+_Financial transaction manager_
 
 
 ## Table of contents
